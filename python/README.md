@@ -6,6 +6,7 @@
 
 - [\*args and \*\*kwargs](https://book.pythontips.com/en/latest/args_and_kwargs.html)
 - [Handling exceptions by using decorators](#handling-exceptions-by-using-decorators)
+- [Keep specific keys from a list of dictionaries](#keep-specific-keys-from-a-list-of-dictionaries)
 
 ## Handling exceptions by using decorators
 
@@ -67,4 +68,48 @@ Divide(8,4)
 Square("three")
 Divide("two","one")
 Mean("six","five")
+```
+
+## Keep specific keys from a list of dictionaries
+
+If we have a dictionary like this:
+
+```python
+data = {
+    "list_of_dictionaries": [
+        {
+            "title":"Title",
+            "description":"description",
+            "name":"Pabon",
+            "another_list":[
+                {
+                    "key1":1,
+                },
+                {
+                    "key2":2,
+                },
+                {
+                    "key3":3,
+                }
+            ]
+        }
+    ],
+    "another_key": "value",
+}
+```
+
+We want specific keys(e.g: name, another_list) keeping into the dictionary, then we can do this:
+
+```python
+
+keys_to_preserve = ["name", "another_list"]
+
+res = [
+    {key: item[key] for key in keys_to_preserve}
+    for item in data["list_of_dictionaries"]
+]
+
+data["list_of_dictionaries"] = res
+
+print(data)
 ```
