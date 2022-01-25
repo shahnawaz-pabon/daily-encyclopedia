@@ -1,4 +1,7 @@
 <div align="center">
+  <a href="https://ubuntu.com/">
+    <img alt="ubuntu" src="../logos/python.png"/>
+  </a>
   <h1>Python</h1>
 </div>
 
