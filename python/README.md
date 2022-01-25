@@ -10,6 +10,9 @@
 - [\*args and \*\*kwargs](https://book.pythontips.com/en/latest/args_and_kwargs.html)
 - [Handling exceptions by using decorators](#handling-exceptions-by-using-decorators)
 - [Keep specific keys from a list of dictionaries](#keep-specific-keys-from-a-list-of-dictionaries)
+- [Convert a query string to valid json](#convert-a-query-string-to-valid-json)
+
+<br>
 
 ## Handling exceptions by using decorators
 
@@ -73,6 +76,8 @@ Divide("two","one")
 Mean("six","five")
 ```
 
+<br>
+
 ## Keep specific keys from a list of dictionaries
 
 If we have a dictionary like this:
@@ -115,4 +120,34 @@ res = [
 data["list_of_dictionaries"] = res
 
 print(data)
+```
+
+<br>
+
+## Convert a query string to valid json
+
+I faced this issue in `django`. The issue was, I was receiving `application/x-www-form-urlencoded` data from the client and I had to sent this to another third party API. Also I had some processing with this data and that's why I had to convert it to `json` format. So I sent the request.body directly to the third party API and do these for my processing.
+
+```python
+from urllib import parse
+import requests
+
+# Parse a query string given as a string argument (data of type application/x-www-form-urlencoded). Data are returned as a list of name, value pairs.
+parsed_data = parse.parse_qs(request.body.decode("utf-8"))
+
+# dictionary comprehension to convert it to a single item
+parsed_data_to_single_item = {
+    k: v for k, vs in parsed_data.items() for v in vs
+}
+print(parsed_data_to_single_item)
+
+
+# For third party API call
+headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+}
+url = "my_url"
+response = requests.post(url, data=request.body, headers=headers)
+print(response.json())
+
 ```
