@@ -11,7 +11,7 @@
 
 ## Password Validation Component System Variables
 
-If we want to change our mysql password in our way for a specific user, we face some problems e.g it can't be possible when the `validate_password` component is enabled. To see the configuration of password checking we can run this command in a mysql shell:
+If we want to change the mysql password in our way for a specific user, we face some problems e.g it can't be possible when the `validate_password` component is enabled. To see the configuration of password checking we can run this command in a mysql shell:
 
 ```sh
 mysql> SHOW VARIABLES LIKE 'validate_password.%';
