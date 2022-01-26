@@ -4,6 +4,7 @@
 
 # Table of Contents
 
+- [MySQL](./mysql/README.md)
 - [PHP](./php/README.md)
 - [Python](./python/README.md)
 - [Ubuntu](./ubuntu/README.md)
