@@ -3,3 +3,24 @@
 </div>
 
 # Table of Contents
+
+- [Laravel Commands](#laravel-commands)
+
+## Laravel Commands
+
+```sh
+php artisan make:factory MedicineOrderDetailsFactory --model=MedicineOrderDetails
+php artisan make:factory MedicineOrderFactory --model=MedicineOrder
+php artisan make:test MedicineOrderController
+php artisan make:model MedicineOrder -m
+php artisan make:model MedicineOrderDetails -m
+php artisan make:model Pharmacy -m
+php artisan make:model Models/Pharmacy -m
+php artisan config:clear && php artisan config:cache
+php artisan make:migration add_votes_to_users_table --table=users // create migration to specific table
+php artisan migrate --path=/database/migrations/2021_06_01_123739_category_name.php // run specific migration
+php artisan make:test Http/Controllers/App/V5/MedicineOrderController
+php artisan make:job JobName
+php artisan make:command CommandName
+php artisan make:middleware Role // add custom middleware
+```
