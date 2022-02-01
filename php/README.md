@@ -1,4 +1,7 @@
 <div align="center">
+  <a href="https://www.php.net/">
+    <img alt="ubuntu" src="../logos/php.png"/>
+  </a>
   <h1>PHP and Laravel</h1>
 </div>
 
