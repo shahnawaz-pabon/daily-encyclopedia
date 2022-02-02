@@ -8,6 +8,7 @@
 # Table of Contents
 
 - [Laravel Commands](#laravel-commands)
+- [Chunk arrays in blade](chunk-arrays-in-blade)
 
 ## Laravel Commands
 
@@ -26,4 +27,22 @@ php artisan make:test Http/Controllers/App/V5/MedicineOrderController
 php artisan make:job JobName
 php artisan make:command CommandName
 php artisan make:middleware Role // add custom middleware
+```
+
+## Chunk arrays in blade
+
+Suppose you're return an array from the controller, you want to show maximum 3 items in a row in your blade view. Then you can do something like this:
+
+```php
+@foreach(array_chunk($your_array_got_from_the_controller, 3) as $chunk)
+    <div class="row">
+        @foreach($chunk as $item)
+
+            <div class="col-md-4">
+                <h1>{{ $item }}</h1>
+            </div>
+
+        @endforeach
+    </div>
+@endforeach
 ```
