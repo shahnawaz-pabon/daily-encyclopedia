@@ -4,6 +4,7 @@
 
 # Table of Contents
 
+- [jQuery](./jquery/README.md)
 - [MongoDB](./mongodb/README.md)
 - [MQTT](./mqtt/README.md)
 - [MySQL](./mysql/README.md)
