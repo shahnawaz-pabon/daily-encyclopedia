@@ -18,3 +18,43 @@ Get the value of child element's input field by name when clicked on parent elem
 ```js
 $(this).children('input[name="inputName"]').val();
 ```
+
+Loop throuh array of objects and add dynamic elements
+
+```js
+name_of_array_of_objects.forEach((el) => {
+  $("#time-slot").append(
+    `
+            <div id="` +
+      el["id"] +
+      `" class="booking-time" style="cursor: pointer;">
+                <input type="hidden" id="` +
+      date +
+      `" name="nameDate" value="` +
+      date +
+      `">
+                <input type="hidden" id="` +
+      year +
+      `" name="nameYear" value="` +
+      year +
+      `">
+                <input type="hidden" id="` +
+      day +
+      `" name="nameDay" value="` +
+      day +
+      `">
+                <input type="hidden" name="slotTime" value="` +
+      el["start_time"] +
+      ` - ` +
+      el["end_time"] +
+      `">
+                <p><i class="far fa-clock mr-2"></i>` +
+      el["start_time"] +
+      ` - ` +
+      el["end_time"] +
+      `</p>
+            </div>
+        `
+  );
+});
+```
