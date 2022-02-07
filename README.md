@@ -11,4 +11,4 @@
 - [PHP](./php/README.md)
 - [Python](./python/README.md)
 - [Ubuntu](./ubuntu/README.md)
-- [Vim](./ubuntu/README.md)
+- [Vim](./vim/README.md)
