@@ -21,12 +21,19 @@ php artisan make:model MedicineOrderDetails -m
 php artisan make:model Pharmacy -m
 php artisan make:model Models/Pharmacy -m
 php artisan config:clear && php artisan config:cache
-php artisan make:migration add_votes_to_users_table --table=users // create migration to specific table
-php artisan migrate --path=/database/migrations/2021_06_01_123739_category_name.php // run specific migration
+# create migration to specific table
+php artisan make:migration add_votes_to_users_table --table=users
+# run specific migration
+php artisan migrate --path=/database/migrations/2021_06_01_123739_your_file.php
 php artisan make:test Http/Controllers/App/V5/MedicineOrderController
 php artisan make:job JobName
 php artisan make:command CommandName
-php artisan make:middleware Role // add custom middleware
+# add custom middleware
+php artisan make:middleware Role
+# rollback specific migration
+php artisan migrate:rollback --path=/database/migrations/2022_02_03_144724_your_file.php
+# rollback 1 step
+php artisan migrate:rollback --step=1
 ```
 
 ## Chunk arrays in blade
