@@ -6,6 +6,7 @@
 
 - [Git](./git/README.md)
 - [jQuery](./jquery/README.md)
+- [JavaScript](./javascript/README.md)
 - [MongoDB](./mongodb/README.md)
 - [MQTT](./mqtt/README.md)
 - [MySQL](./mysql/README.md)
