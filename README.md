@@ -5,6 +5,7 @@
 # Table of Contents
 
 - [Git](./git/README.md)
+- [GO](./go/README.md)
 - [jQuery](./jquery/README.md)
 - [JavaScript](./javascript/README.md)
 - [MongoDB](./mongodb/README.md)
