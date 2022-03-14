@@ -8,7 +8,8 @@
 # Table of Contents
 
 - [Laravel Commands](#laravel-commands)
-- [Chunk arrays in blade](chunk-arrays-in-blade)
+- [Chunk arrays in blade](#chunk-arrays-in-blade)
+- [Get specific column](#get-specific-column)
 
 ## Laravel Commands
 
@@ -52,4 +53,13 @@ Suppose you're return an array from the controller, you want to show maximum 3 i
         @endforeach
     </div>
 @endforeach
+```
+
+## Get specific column
+
+Get specific column in laravel eloquent:
+
+```php
+// User is the name of a model
+User::where('id', $id)->first()->field_name
 ```
