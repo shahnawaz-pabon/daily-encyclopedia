@@ -11,6 +11,7 @@
 - [Handling exceptions by using decorators](#handling-exceptions-by-using-decorators)
 - [Keep specific keys from a list of dictionaries](#keep-specific-keys-from-a-list-of-dictionaries)
 - [Convert a query string to valid json](#convert-a-query-string-to-valid-json)
+- [Custom date formatter](#custom-date-formatter)
 
 <br>
 
@@ -150,4 +151,24 @@ url = "my_url"
 response = requests.post(url, data=request.body, headers=headers)
 print(response.json())
 
+```
+
+## Custom date formatter
+
+```python
+def get_month_year(custom_date):
+    return custom_date.strftime("%d %B, %Y")
+
+
+def get_am_pm(custom_date):
+    # date_time = datetime.strftime(custom_date)
+    return custom_date.strftime("%I:%M %p")
+
+
+def get_weekday(custom_date):
+    return custom_date.strftime("%A")
+
+
+def get_abbreviated_weekday(custom_date):
+    return custom_date.strftime("%a")
 ```
