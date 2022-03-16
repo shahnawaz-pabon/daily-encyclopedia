@@ -10,6 +10,7 @@
 - [Laravel Commands](#laravel-commands)
 - [Chunk arrays in blade](#chunk-arrays-in-blade)
 - [Get specific column](#get-specific-column)
+- [Upload multiple files to the third party API](#upload-multiple-files-to-the-third-party-api)
 
 ## Laravel Commands
 
@@ -62,4 +63,60 @@ Get specific column in laravel eloquent:
 ```php
 // User is the name of a model
 User::where('id', $id)->first()->field_name
+```
+
+## Upload multiple files to the third party API
+
+```php
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
+
+public function __construct()
+{
+    $this->client = new Client([
+        'base_uri' => 'https://base_url'
+    ]);
+}
+
+public function processFiles(){
+    $process_urls = $orderData['file_urls'][0];
+    $prescription_urls = preg_replace("^[\"\[\] ]^", "", $process_urls);
+    $prescription_urls = explode(',', $prescription_urls); // for multiple urls
+
+    $multipartArrays = [];
+    $fileNameArrays = [];
+
+    foreach ($prescription_urls as $url){
+        // Use basename() function to return the base name of file
+        $file_name = 'files/' . basename($url);
+//            dd($file_name);
+        file_put_contents($file_name, file_get_contents($url)); // save file in public folder
+        $multipartObj = [
+            'name' => 'prescription_files',
+            'contents' => fopen(public_path($file_name), 'rb')
+        ];
+        array_push($multipartArrays, $multipartObj);
+//            dd(File::exists(public_path($file_name))); // check whether file exists
+//            dd(fopen(public_path($file_name), 'rb'));//verify that file exists
+        array_push($fileNameArrays, $file_name);
+
+    }
+
+    [$statusCode, $response] = $this->uploadMultipleFiles($multipartArrays);
+
+    return $response
+}
+
+public function uploadMultipleFiles($multipartArrays){
+  $apiRequest = $this->client->request('POST', 'upload/files',
+    [
+        'headers' => [
+            'Authorization' => $this->getAuthorizationToken()
+        ],
+        'multipart' => $multipartArrays,
+        'verify' => false
+    ]);
+return [json_decode($apiRequest->getStatusCode()), json_decode($apiRequest->getBody())];
+}
 ```
