@@ -22,9 +22,13 @@ sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 # adding GPG key for the official Docker repository in the system
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# adding the Docker repository to APT sources, this will also update our package database with the Docker packages from the newly added repo
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+# checking whether docker is going to be installed from the Docker repo instead of the default Ubuntu repo:
 apt-cache policy docker-ce
+# installing Docker
 sudo apt install docker-ce
+# check that it’s running
 sudo systemctl status docker
 ```
 
