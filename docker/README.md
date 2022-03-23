@@ -7,21 +7,35 @@
 
 # Table of Contents
 
-- [Miscellaneous commands](#miscellaneous-commands)
+- [Installing Docker](#installing-docker)
+- [See docker networks](#see-docker-networks)
+- [Link ngrok to the running docker container](#link-ngrok-to-the-running-docker-container)
 
-  - [See docker networks](#see-docker-networks)
-  - [Link ngrok to the running docker container](#link-ngrok-to-the-running-docker-container)
+## Installing Docker
 
-## Miscellaneous commands
+This procedure was applied on the `Ubuntu 20.04` OS
 
-### See docker networks
+```sh
+# updating existing list of packages
+sudo apt update
+# installing a few prerequisite packages which let apt use packages over HTTPS
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+# adding GPG key for the official Docker repository in the system
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker
+```
+
+## See docker networks
 
 ```sh
 # This command lists all the docker networks. docker-compose will create a new network when you run docker-compose up
 docker network ls
 ```
 
-### Link ngrok to the running docker container
+## Link ngrok to the running docker container
 
 ```sh
 # The --rm flag tells docker that the container should automatically be removed after we close docker.
