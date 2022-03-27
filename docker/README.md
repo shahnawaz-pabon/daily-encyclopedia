@@ -10,6 +10,7 @@
 - [Installing Docker](#installing-docker)
 - [See docker networks](#see-docker-networks)
 - [Link ngrok to the running docker container](#link-ngrok-to-the-running-docker-container)
+- [Docker Multistage Builds](#docker-multistage-builds)
 
 ## Installing Docker
 
@@ -51,3 +52,7 @@ docker run --rm -it --link <container-name> --net <docker-network> shkoliar/ngro
 
 - You can see container list by running `docker container ls`
 - Get your authtoken from the [ngrok's dashboard](https://dashboard.ngrok.com/login).
+
+## Docker Multistage Builds
+
+Defining multiple images inside a single `Dockerfile` to build the final image is multistage build. Multistage build is used to keep images as small as possible in production.
