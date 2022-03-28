@@ -8,6 +8,7 @@
 # Table of Contents
 
 - [Installing Docker](#installing-docker)
+- [Run docker as a non-root user](#run-docker-as-a-non-root-user)
 - [See docker networks](#see-docker-networks)
 - [Link ngrok to the running docker container](#link-ngrok-to-the-running-docker-container)
 - [Docker Multistage Builds](#docker-multistage-builds)
@@ -31,6 +32,23 @@ apt-cache policy docker-ce
 sudo apt install docker-ce
 # check that it’s running
 sudo systemctl status docker
+```
+
+## Run docker as a non-root user
+
+Docker commands can be run under `root` user or users that are under `docker` group.
+
+```sh
+# add docker group if it doesn't already exist
+sudo groupadd docker
+# -aG option will append the current user to the docker group
+sudo usermod -aG docker ${USER}
+# user that is not logged in to the system
+sudo usermod -aG docker username
+# Log out and log back in so that your group membership is re-evaluated or run this
+# The newgrp command is used to change the current group ID during a login session
+newgrp docker # activate the changes to groups
+docker images # check docker images without sudo
 ```
 
 ## See docker networks
