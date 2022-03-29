@@ -78,3 +78,13 @@ Then add the following line in your `~/.bashrc` file (if not found, create the f
 ```sh
 alias vim="vim -S ~/.vimrc"
 ```
+
+### Delete a single line
+
+Bring your cursor to the line you want to delete, then write `:d` and press `Enter`. Or simply you can quickly press `dd` to delete the current line.
+
+### Delete all the lines
+
+```sh
+:%d
+```
