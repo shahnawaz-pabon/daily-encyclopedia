@@ -11,6 +11,7 @@
 - [Run docker as a non-root user](#run-docker-as-a-non-root-user)
 - [See docker networks](#see-docker-networks)
 - [Link ngrok to the running docker container](#link-ngrok-to-the-running-docker-container)
+- [Setup SQL Server](#setup-sql-server)
 - [Docker Multistage Builds](#docker-multistage-builds)
 
 ## Installing Docker
@@ -70,6 +71,42 @@ docker run --rm -it --link <container-name> --net <docker-network> shkoliar/ngro
 
 - You can see container list by running `docker container ls`
 - Get your authtoken from the [ngrok's dashboard](https://dashboard.ngrok.com/login).
+
+## Setup SQL Server
+
+```sh
+# Pull, run and bind with local port
+sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong@Passw0rd>" \
+   -p 1433:1433 --name sql1 --hostname sql1 \
+   -d mcr.microsoft.com/mssql/server:2019-latest
+```
+
+You can connect to the SQL Server using the `sqlcmd` tool inside of the container by using the following command.
+
+```sh
+docker exec -it <container_id|container_name> /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P <your_password>
+```
+
+Alternatively you can do the following as well
+
+```sh
+# Here sql1 is the hostname
+docker exec -it sql1 "bash"
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+```
+
+Test whether you can see databases
+
+```sh
+CREATE DATABASE TestDB
+SELECT Name from sys.Databases
+```
+
+Don't forget to run `GO` in the end for executing the previous commands.
+
+```sh
+GO
+```
 
 ## Docker Multistage Builds
 
