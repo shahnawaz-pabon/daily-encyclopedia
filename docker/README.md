@@ -13,6 +13,8 @@
 - [Link ngrok to the running docker container](#link-ngrok-to-the-running-docker-container)
 - [Setup SQL Server](#setup-sql-server)
 - [Docker Multistage Builds](#docker-multistage-builds)
+- [List and remove all images](#list-and-remove-all-images)
+- [List and remove all exited containers](#list-and-remove-all-exited-containers)
 
 ## Installing Docker
 
@@ -110,4 +112,32 @@ GO
 
 ## Docker Multistage Builds
 
-Defining multiple images inside a single `Dockerfile` to build the final image is multistage build. Multistage build is used to keep images as small as possible in production.
+Defining multiple images inside a single `Dockerfile` to build the final image is multistage build. Multistage build is used to keep images as small as possible in production. [See this](single-stage/README.md) with a real-life example.
+
+## List and remove all images
+
+- List images
+
+```sh
+docker images -a
+```
+
+- Remove all images
+
+```sh
+docker rmi $(docker images -a -q)
+```
+
+## List and remove all exited containers
+
+- List exited containers
+
+```sh
+docker ps -a -f status=exited
+```
+
+- Remove exited containers
+
+```sh
+docker rm $(docker ps -a -f status=exited -q)
+```
