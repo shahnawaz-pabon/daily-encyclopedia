@@ -8,6 +8,7 @@
 # Table of Contents
 
 - [Setup GEO Server on Ubuntu](#setup-geo-server-on-ubuntu)
+- [Setup POSTGIS with Docker](#setup-postgis-with-docker)
 
 ## Setup GEO Server on Ubuntu
 
@@ -42,3 +43,15 @@ sh startup.sh
 In a web browser, navigate to [http://localhost:8080/geoserver](http://localhost:8080/geoserver).
 The default `username: admin` and `password: geoserver`
 To shut down GeoServer, either close the persistent command-line window or run the `shutdown.sh` file inside the `bin` directory.
+
+## Setup POSTGIS with Docker
+
+```sh
+docker run -d -p 5432:5432 --name db kartoza/postgis:13.0
+```
+
+Postgis docker’s Credentials
+
+**Username: `docker`**
+**Password: `docker`**
+**Database: `gis`**
