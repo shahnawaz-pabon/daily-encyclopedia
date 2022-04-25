@@ -8,6 +8,7 @@
 # Table of Contents
 
 - [Setup GEO Server on Ubuntu](#setup-geo-server-on-ubuntu)
+- [Linux init script](#linux-init-script)
 - [Setup POSTGIS with Docker](#setup-postgis-with-docker)
 
 ## Setup GEO Server on Ubuntu
@@ -43,6 +44,23 @@ sh startup.sh
 In a web browser, navigate to [http://localhost:8080/geoserver](http://localhost:8080/geoserver).
 The default `username: admin` and `password: geoserver`
 To shut down GeoServer, either close the persistent command-line window or run the `shutdown.sh` file inside the `bin` directory.
+
+## Linux init script
+
+To start the GeoServer from the systemctl, you need to follow [this link](https://docs.geoserver.org/stable/en/user/production/linuxscript.html).
+
+Download the script, create a file in this directory `/etc/init.d/geoserver` copy the script, and paste it into the geoserver file. Make the file executable by running this command:
+
+```sh
+sudo chmod +x /etc/init.d/geoserver
+```
+
+Reload the systemctl daemon and start the geoserver:
+
+```sh
+sudo systemctl daemon-reload
+sudo systemctl start geoserver
+```
 
 ## Setup POSTGIS with Docker
 
