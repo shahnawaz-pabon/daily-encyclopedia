@@ -88,3 +88,12 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 ```sh
 :%d
 ```
+
+### Delete a range of lines
+
+`:[Starting Line Number],[Ending Line Number]d`
+
+```sh
+# Line number 5,6,7 will be removed
+:5,7d
+```
