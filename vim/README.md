@@ -97,3 +97,12 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 # Line number 5,6,7 will be removed
 :5,7d
 ```
+
+### Delete the line with a custom pattern
+
+`:g /<WORD>/d`
+
+```sh
+# Lines containing the "linux" word will be deleted
+:g /linux/d
+```
