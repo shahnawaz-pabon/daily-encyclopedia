@@ -106,3 +106,9 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 # Lines containing the "linux" word will be deleted
 :g /linux/d
 ```
+
+### Delete all blank lines
+
+```sh
+:g /^$/d
+```
