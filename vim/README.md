@@ -112,3 +112,10 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 ```sh
 :g /^$/d
 ```
+
+### Delete lines that start with a specific letter
+
+```sh
+# Delete all lines that start with letter "S"
+:g /^S/d
+```
