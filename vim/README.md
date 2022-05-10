@@ -119,3 +119,10 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 # Delete all lines that start with letter "S"
 :g /^S/d
 ```
+
+### Delete all lines after line number
+
+```sh
+# If your cursor is on line number 5, then this command will delete all lines below line number 5
+:+1,$d
+```
