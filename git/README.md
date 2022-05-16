@@ -10,6 +10,7 @@
 - [Revert back to the original branch](#revert-back-to-the-original-branch)
 - [Delete a local branch](#delete-a-local-branch)
 - [Delete a remote branch](#delete-a-remote-branch)
+- [Set git editor to vim](#set-git-editor-to-vim)
 
 ## Revert back to the original branch
 
@@ -39,4 +40,10 @@ Revert back to the last commit you were in for a specific file
 
 ```sh
 git restore `filepath`
+```
+
+## Set git editor to vim
+
+```sh
+git config --global core.editor "vim"
 ```
