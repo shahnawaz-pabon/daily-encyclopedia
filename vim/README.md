@@ -133,3 +133,9 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 # If your cursor is on line number 5, then this command will delete all lines before line number 5
 :1,-1d
 ```
+
+## Copy the current line
+
+```sh
+yy
+```
