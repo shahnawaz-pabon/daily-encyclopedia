@@ -47,3 +47,9 @@ git restore `filepath`
 ```sh
 git config --global core.editor "vim"
 ```
+
+## Replace all occurences of `old` words by a `new` word in the file
+
+```sh
+:%s/old/new/g
+```
