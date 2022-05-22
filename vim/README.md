@@ -139,3 +139,9 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 ```sh
 yy
 ```
+
+## Copy selected text to the clipboard
+
+```sh
+y
+```
