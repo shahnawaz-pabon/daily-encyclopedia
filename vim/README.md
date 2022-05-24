@@ -145,3 +145,9 @@ yy
 ```sh
 y
 ```
+
+## Cut current line
+
+```sh
+dd
+```
