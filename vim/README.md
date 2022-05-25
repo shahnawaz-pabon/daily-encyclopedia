@@ -151,3 +151,9 @@ y
 ```sh
 dd
 ```
+
+## Copy to end of line
+
+```sh
+y$
+```
