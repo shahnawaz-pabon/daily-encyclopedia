@@ -157,3 +157,9 @@ dd
 ```sh
 y$
 ```
+
+## Cut to end of line
+
+```sh
+D
+```
