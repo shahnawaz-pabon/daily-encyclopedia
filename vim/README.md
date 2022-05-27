@@ -163,3 +163,9 @@ y$
 ```sh
 D
 ```
+
+## Paste clipboard contents
+
+```sh
+p
+```
