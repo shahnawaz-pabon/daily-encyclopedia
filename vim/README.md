@@ -169,3 +169,9 @@ D
 ```sh
 p
 ```
+
+## Search word
+
+```sh
+/word
+```
