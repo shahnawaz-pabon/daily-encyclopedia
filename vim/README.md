@@ -170,8 +170,14 @@ D
 p
 ```
 
-## Search word
+## Search word from the top to bottom
 
 ```sh
 /word
+```
+
+## Search word from the bottom to top
+
+```sh
+?word
 ```
