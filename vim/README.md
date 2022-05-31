@@ -181,3 +181,9 @@ p
 ```sh
 ?word
 ```
+
+## Search the word under the cursor
+
+```sh
+*
+```
