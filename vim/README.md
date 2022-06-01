@@ -187,3 +187,9 @@ p
 ```sh
 *
 ```
+
+## Search a string, case insensitive
+
+```sh
+/\cstring
+```
