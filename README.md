@@ -5,6 +5,7 @@
 # Table of Contents
 
 - [Docker](./docker/README.md)
+- [DynamoDB](./dynamodb/README.md)
 - [GeoServer](./geoserver/README.md)
 - [Git](./git/README.md)
 - [GO](./go/README.md)
@@ -14,6 +15,7 @@
 - [MongoDB](./mongodb/README.md)
 - [MQTT](./mqtt/README.md)
 - [MySQL](./mysql/README.md)
+- [NGINX](./nginx/README.md)
 - [PHP](./php/README.md)
 - [PostGIS](./postgis/README.md)
 - [Python](./python/README.md)
