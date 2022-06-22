@@ -8,9 +8,23 @@
 # Table of Contents
 
 - [Get the Audio Codec for your machine's model](#get-the-audio-codec-for-your-machine's-model)
+- [Fix - Package system is broken](#fix---package-system-is-broken)
 
 ## Get the Audio Codec for your machine's model
 
 ```sh
 cat /proc/asound/card*/codec* | grep Codec
+```
+
+## Fix - Package system is broken
+
+```sh
+# to force an install of the files that didn't get loaded because of the error
+sudo apt-get -f install
+sudo apt-get update
+# run back and forth until only the package that has the error is left.
+sudo apt-get -f install
+sudo dpkg --configure -a
+# clean the cache
+sudo apt-get clean
 ```
