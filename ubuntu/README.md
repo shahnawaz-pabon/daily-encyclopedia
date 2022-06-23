@@ -9,6 +9,7 @@
 
 - [Get the Audio Codec for your machine's model](#get-the-audio-codec-for-your-machine's-model)
 - [Fix - Package system is broken](#fix---package-system-is-broken)
+- [dpkg - error processing package](#dpkg---error-processing-package)
 
 ## Get the Audio Codec for your machine's model
 
@@ -27,4 +28,10 @@ sudo apt-get -f install
 sudo dpkg --configure -a
 # clean the cache
 sudo apt-get clean
+```
+
+## dpkg - error processing package
+
+```sh
+sudo apt --fix-broken install
 ```
