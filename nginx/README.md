@@ -36,4 +36,6 @@ sudo ufw reload
 # to allow both
 sudo ufw allow 'nginx full'
 
+# test nginx
+http://127.0.0.1
 ```
