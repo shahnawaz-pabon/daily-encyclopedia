@@ -10,6 +10,7 @@
 - [Get the Audio Codec for your machine's model](#get-the-audio-codec-for-your-machine's-model)
 - [Fix - Package system is broken](#fix---package-system-is-broken)
 - [dpkg - error processing package](#dpkg---error-processing-package)
+- [Monitor system processes with htop](#monitor-system-processes-with-htop)
 
 ## Get the Audio Codec for your machine's model
 
@@ -34,4 +35,11 @@ sudo apt-get clean
 
 ```sh
 sudo apt --fix-broken install
+```
+
+## Monitor system processes with htop
+
+```sh
+sudo apt install htop
+htop
 ```
