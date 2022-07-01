@@ -39,3 +39,9 @@ sudo ufw allow 'nginx full'
 # test nginx
 http://127.0.0.1
 ```
+
+## Configure a Server Block
+
+```sh
+sudo mkdir -p /var/www/test_domain.com/html
+```
