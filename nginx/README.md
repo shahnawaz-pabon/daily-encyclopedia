@@ -5,6 +5,13 @@
   <h1>NGINX</h1>
 </div>
 
+# Table of Contents
+
+- [Setup nginx on Ubuntu](#setup-nginx-on-ubuntu)
+- [Configure a Server Block](#configure-a-server-block)
+
+## Setup nginx on Ubuntu
+
 ```sh
 # update software repositories
 sudo apt-get update
@@ -43,5 +50,13 @@ http://127.0.0.1
 ## Configure a Server Block
 
 ```sh
+# create a directory for the test domain
 sudo mkdir -p /var/www/test_domain.com/html
+
+# configure ownership and permissions
+sudo chown -R $USER:$USER /var/www/test_domain.com
+sudo chmod -R 755 /var/www/test_domain.com
+
+# create an index.html file for the server block
+sudo vim /var/www/test_domain.com/html/index.html
 ```
