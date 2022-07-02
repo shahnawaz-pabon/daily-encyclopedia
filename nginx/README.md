@@ -60,3 +60,18 @@ sudo chmod -R 755 /var/www/test_domain.com
 # create an index.html file for the server block
 sudo vim /var/www/test_domain.com/html/index.html
 ```
+
+Add the following:
+
+```html
+<html>
+  <head>
+    <title>Welcome to test_domain.com!</title>
+  </head>
+  <body>
+    <h1>
+      This message confirms that your Nginx server block is working. Great work!
+    </h1>
+  </body>
+</html>
+```
