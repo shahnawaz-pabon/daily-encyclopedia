@@ -11,6 +11,7 @@
 - [Linux init script](#linux-init-script)
 - [Setup POSTGIS with Docker](#setup-postgis-with-docker)
 - [Setup GeoServer on Ubuntu using tomcat](#setup-geoserver-on-ubuntu-using-tomcat)
+- [Setup Open Source Routing Machine](#setup-open-source-routing-machine)
 
 ## Setup GeoServer on Ubuntu
 
@@ -132,4 +133,35 @@ sudo mv geoserver.war /var/lib/tomcat9/webapps/
 
 ```sh
 sudo service tomcat9 restart
+```
+
+<br>
+
+## Setup Open Source Routing Machine
+
+- [DockerHub Docs](https://hub.docker.com/r/osrm/osrm-backend/)
+
+Download OpenStreetMap extracts from [Geofabrik](https://download.geofabrik.de/asia/bangladesh-latest.osm.pbf)
+
+```
+wget https://download.geofabrik.de/asia/bangladesh-latest.osm.pbf
+```
+
+Pre-process the extract with the car profile and start a routing engine HTTP server on port `8889`
+
+```sh
+docker run -t -v "${PWD}:/data" osrm/osrm-backend osrm-extract -p /opt/car.lua /data/bangladesh-latest.osm.pbf
+```
+
+The flag -v `"${PWD}:/data"` creates the directory `/data` inside the docker container and makes the current working directory `"${PWD}"` available there. The file `/data/bangladesh-latest.osm.pbf` inside the container is referring to `"${PWD}/bangladesh-latest.osm.pbf"` on the host.
+
+```sh
+docker run -t -v "${PWD}:/data" osrm/osrm-backend osrm-partition /data/bangladesh-latest.osrm
+docker run -t -v "${PWD}:/data" osrm/osrm-backend osrm-customize /data/bangladesh-latest.osrm
+```
+
+Note that `bangladesh-latest.osrm` has a different file extension.
+
+```sh
+docker run -t -i -d -p 8889:5000 -v "${PWD}:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/bangladesh-latest.osrm
 ```
