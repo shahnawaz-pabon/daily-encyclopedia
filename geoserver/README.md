@@ -7,11 +7,12 @@
 
 # Table of Contents
 
-- [Setup GEO Server on Ubuntu](#setup-geo-server-on-ubuntu)
+- [Setup GeoServer on Ubuntu](#setup-geoserver-on-ubuntu)
 - [Linux init script](#linux-init-script)
 - [Setup POSTGIS with Docker](#setup-postgis-with-docker)
+- [Setup GeoServer on Ubuntu using tomcat](#setup-geoserver-on-ubuntu-using-tomcat)
 
-## Setup GEO Server on Ubuntu
+## Setup GeoServer on Ubuntu
 
 Make sure you have a `Java Runtime Environment (JRE)` installed on your system. GeoServer requires a Java 8 or Java 11 environment, available from [OpenJDK](https://openjdk.java.net/), [Adoptium](https://adoptium.net/), or provided by your OS distribution.
 Navigate to the [GeoServer Download page](http://geoserver.org/download).
@@ -45,6 +46,8 @@ In a web browser, navigate to [http://localhost:8080/geoserver](http://localhost
 The default `username: admin` and `password: geoserver`
 To shut down GeoServer, either close the persistent command-line window or run the `shutdown.sh` file inside the `bin` directory.
 
+<br/>
+
 ## Linux init script
 
 To start the GeoServer from the systemctl, you need to follow [this link](https://docs.geoserver.org/stable/en/user/production/linuxscript.html).
@@ -62,6 +65,8 @@ sudo systemctl daemon-reload
 sudo systemctl start geoserver
 ```
 
+<br/>
+
 ## Setup POSTGIS with Docker
 
 ```sh
@@ -73,3 +78,58 @@ Postgis docker’s Credentials
 **Username: `docker`**
 **Password: `docker`**
 **Database: `gis`**
+
+<br/>
+
+## Setup GeoServer on Ubuntu using tomcat
+
+### Install tomcat
+
+```sh
+sudo apt-get install default-jre tomcat9 tomcat9-admin
+```
+
+### Add a tomcat user
+
+```sh
+sudo vim /etc/tomcat8/tomcat-users.xml
+```
+
+Add the following lines
+
+```xml
+<role rolename="manager-gui"/>
+   <user username="admin" password="admin"
+      roles="manager-gui,admin-gui,manager,admin,manager-script,admin-script"/>
+```
+
+### Increase the deploy filesize
+
+```sh
+sudo vim /usr/share/tomcat9-admin/manager/WEB-INF/web.xml
+```
+
+Change the following lines:
+
+```xml
+<multipart-config>
+     <!-- 50MB max -> Increase this value below: -->
+     <max-file-size>114428800</max-file-size>
+     <max-request-size>114428800</max-request-size>
+```
+
+### Install GeoServer .war file
+
+- [Download war file](http://geoserver.org/release/stable/)
+- Unzip `geoserver-\*-war.zip` `geoserver.war`
+- Move the war file to `webapps` dir:
+
+```sh
+sudo mv geoserver.war /var/lib/tomcat9/webapps/
+```
+
+### Restart Tomcat
+
+```sh
+sudo service tomcat9 restart
+```
