@@ -11,12 +11,15 @@
 - [Fix - Package system is broken](#fix---package-system-is-broken)
 - [dpkg - error processing package](#dpkg---error-processing-package)
 - [Monitor system processes with htop](#monitor-system-processes-with-htop)
+- [Copy a file from remote to local and vice versa via scp](#copy-a-file-from-remote-to-local-and-vice-versa-via-scp)
 
 ## Get the Audio Codec for your machine's model
 
 ```sh
 cat /proc/asound/card*/codec* | grep Codec
 ```
+
+<br>
 
 ## Fix - Package system is broken
 
@@ -31,15 +34,35 @@ sudo dpkg --configure -a
 sudo apt-get clean
 ```
 
+<br>
+
 ## dpkg - error processing package
 
 ```sh
 sudo apt --fix-broken install
 ```
 
+<br>
+
 ## Monitor system processes with htop
 
 ```sh
 sudo apt install htop
 htop
+```
+
+<br>
+
+## Copy a file from remote to local and vice versa via scp
+
+### Copy from remote to local
+
+```sh
+scp -r -P 80 username@remote_ip:/remote/directory/ /local/directory
+```
+
+### Copy from local to remote
+
+```sh
+scp -P 80 /local/directory/drive-download-20220720T120659Z-001.zip username@remote_ip:/remote/directory
 ```
