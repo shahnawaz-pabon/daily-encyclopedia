@@ -12,6 +12,7 @@
 - [dpkg - error processing package](#dpkg---error-processing-package)
 - [Monitor system processes with htop](#monitor-system-processes-with-htop)
 - [Copy a file from remote to local and vice versa via scp](#copy-a-file-from-remote-to-local-and-vice-versa-via-scp)
+- [Operate mysql at boot time](#operate-mysql-at-boot-time)
 
 ## Get the Audio Codec for your machine's model
 
@@ -65,4 +66,26 @@ scp -r -P 80 username@remote_ip:/remote/directory/ /local/directory
 
 ```sh
 scp -P 80 /local/directory/drive-download-20220720T120659Z-001.zip username@remote_ip:/remote/directory
+```
+
+<br>
+
+## Operate mysql at boot time
+
+### Stop running at boot time
+
+```sh
+sudo systemctl disable mysql
+```
+
+### Check whether enabled currently
+
+```sh
+sudo systemctl is-enabled mysql
+```
+
+### Start running at boot time
+
+```sh
+sudo systemctl enable mysql
 ```
