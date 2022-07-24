@@ -15,6 +15,7 @@
 - [Docker Multistage Builds](#docker-multistage-builds)
 - [List and remove all images](#list-and-remove-all-images)
 - [List and remove all exited containers](#list-and-remove-all-exited-containers)
+- [Restart container at computer boot](#restart-container-at-computer-boot)
 
 ## Installing Docker
 
@@ -37,6 +38,8 @@ sudo apt install docker-ce
 sudo systemctl status docker
 ```
 
+<br>
+
 ## Run docker as a non-root user
 
 Docker commands can be run under `root` user or users that are under `docker` group.
@@ -54,12 +57,16 @@ newgrp docker # activate the changes to groups
 docker images # check docker images without sudo
 ```
 
+<br>
+
 ## See docker networks
 
 ```sh
 # This command lists all the docker networks. docker-compose will create a new network when you run docker-compose up
 docker network ls
 ```
+
+<br>
 
 ## Link ngrok to the running docker container
 
@@ -73,6 +80,8 @@ docker run --rm -it --link <container-name> --net <docker-network> shkoliar/ngro
 
 - You can see container list by running `docker container ls`
 - Get your authtoken from the [ngrok's dashboard](https://dashboard.ngrok.com/login).
+
+<br>
 
 ## Setup SQL Server
 
@@ -110,9 +119,13 @@ Don't forget to run `GO` in the end for executing the previous commands.
 GO
 ```
 
+<br>
+
 ## Docker Multistage Builds
 
 Defining multiple images inside a single `Dockerfile` to build the final image is multistage build. Multistage build is used to keep images as small as possible in production. [See this](single-stage/README.md) with a real-life example.
+
+<br>
 
 ## List and remove all images
 
@@ -128,6 +141,8 @@ docker images -a
 docker rmi $(docker images -a -q)
 ```
 
+<br>
+
 ## List and remove all exited containers
 
 - List exited containers
@@ -141,3 +156,13 @@ docker ps -a -f status=exited
 ```sh
 docker rm $(docker ps -a -f status=exited -q)
 ```
+
+<br>
+
+## Restart container at computer boot
+
+```sh
+docker update --restart unless-stopped <container_id>
+```
+
+<br>
