@@ -16,6 +16,7 @@
 - [List and remove all images](#list-and-remove-all-images)
 - [List and remove all exited containers](#list-and-remove-all-exited-containers)
 - [Restart container at computer boot](#restart-container-at-computer-boot)
+- [Dockerize Laravel application with newrelic](#dockerize-laravel-application-with-newrelic)
 
 ## Installing Docker
 
@@ -166,3 +167,116 @@ docker update --restart unless-stopped <container_id>
 ```
 
 <br>
+
+## Dockerize Laravel application with newrelic
+
+**`Dockerfile`**
+
+```Dockerfile
+FROM ubuntu:bionic
+
+RUN apt-get update && apt-get -y upgrade && apt-get install -y software-properties-common tzdata
+RUN echo "Asia/Karachi" > /etc/timezone && rm -f /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
+RUN add-apt-repository -y ppa:ondrej/php
+RUN apt-get update
+RUN apt install -y wget php8.0 php8.0-fpm php8.0-common php8.0-mysql php8.0-xml php8.0-dev php8.0-xmlrpc php8.0-curl php8.0-mbstring php8.0-zip
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php composer-setup.php
+RUN mv composer.phar /usr/local/bin/composer
+RUN apt-get install -y php8.0-mongodb unzip
+RUN apt-get install -y php8.0-gd
+#RUN apt-get install -y mysql-client
+WORKDIR /app
+COPY . .
+
+
+
+## New relic installation
+#RUN wget -r -l1 -nd -A"linux.tar.gz" https://download.newrelic.com/php_agent/release/
+RUN wget https://download.newrelic.com/php_agent/release/newrelic-php5-9.18.1.303-linux.tar.gz
+
+# Unzip it and enter it
+RUN gzip -dc newrelic*.tar.gz | tar xf -
+WORKDIR '/app/newrelic-php5-9.18.1.303-linux'
+RUN ls -l
+
+# Delete any previous New Relic extension
+RUN rm -f /usr/lib/php/20200930/newrelic.so
+
+# Copy the downloaded extension to your php's extension directory
+# If is ZTS is compiled in, the file name should have "-zts" appended. See examples below.
+RUN cp ./agent/x64/newrelic-20200930.so /usr/lib/php/20200930/newrelic.so
+
+# Install New Relic's daemon
+RUN cp ./daemon/newrelic-daemon.x64 /usr/bin/newrelic-daemon
+
+WORKDIR /app
+
+# Copy your newrelic.ini custom file to your php conf.d dir. Make sure your php reads .ini files from this directory.
+RUN cp /app/newrelic.ini /etc/php/8.0/fpm/conf.d/20-newrelic.ini
+RUN cp /app/newrelic.ini /etc/php/8.0/cli/conf.d/20-newrelic.ini
+```
+
+<br>
+
+**`init.sh`**
+
+```sh
+#!/bin/bash
+#mysql -uroot -pexample --host mysql -e "CREATE DATABASE IF NOT EXISTS maya_local;"
+composer install --ignore-platform-reqs
+#php artisan sentry:publish --dsn=http://cbe2201f8f374c9785b10697886ce902@3.0.117.15:9000/3
+php artisan optimize:clear
+php artisan cache:clear
+php artisan config:clear
+php artisan key:generate
+php artisan passport:keys
+#php artisan migrate
+#php artisan db:seed
+
+#New relic
+/usr/bin/newrelic-daemon start
+
+# Server application
+php artisan serve --host 0.0.0.0
+```
+
+<br>
+
+**`docker-compose.yml`**
+
+```yml
+version: "3"
+
+services:
+  client:
+    build: ./
+    command: tail -f /dev/null
+    ports:
+      - 5500:8000
+    #    depends_on:
+    #      - mysql
+    volumes:
+      - ./:/app
+    entrypoint: ./init.sh
+
+  #  mysql:
+  #    image: mariadb
+  #    environment:
+  #      MYSQL_ROOT_PASSWORD: example
+  #      MYSQL_USER: root
+  #    volumes:
+  #      - ./mysqldbdir:/var/lib/mysql
+  #    ports:
+  #      - 3307:3306
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+
+networks:
+  default:
+    external:
+      name: custom-bot
+```
