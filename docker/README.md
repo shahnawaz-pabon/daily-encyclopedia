@@ -313,8 +313,8 @@ ENV NEW_RELIC_LOG=stderr \
     NEW_RELIC_LOG_LEVEL=info \
     NEW_RELIC_ENABLED=true \
     NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true \
-    NEW_RELIC_LICENSE_KEY=5ba335a3551e977b1b05d0df05f70ea3643c7f49 \
-    NEW_RELIC_APP_NAME="moolah-package-production"
+    NEW_RELIC_LICENSE_KEY=<license_key> \
+    NEW_RELIC_APP_NAME="app-name"
 
 # copy project
 COPY . .
