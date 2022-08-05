@@ -9,6 +9,9 @@
 
 - [Run a django project via virtual environment](#run-a-django-project-via-virtual-environment)
 - [SQLite things](#sqlite-things)
+- [Add cronjob in django](#add-cronjob-in-django)
+- [Show active cronjobs](#show-active-cronjobs)
+- [Remove cronjob in django](#remove-cronjob-in-django)
 
 ## Run a django project via virtual environment
 
@@ -51,3 +54,35 @@ $ .tables
 Don't forget to have [sqlite](https://www.sqlite.org/download.html) in your OS if you want to run sqlite from your terminal.
 
 To see sqlite's db tables via the client, you can download [DB Browser](https://sqlitebrowser.org/) and open **`db.sqlite3`** file.
+
+<br>
+
+## Add cronjob in django
+
+Run this command to add all the defined CRONJOBS to crontab(\*nix cron utility). Make sure to run this command every time CRONJOBS is changed in any way.
+
+```sh
+python manage.py crontab add
+```
+
+<br>
+
+## Show active cronjobs
+
+To get all the active CRONJOBS, run the following command
+
+```sh
+python manage.py crontab show
+```
+
+<br>
+
+## Remove cronjob in django
+
+To remove all the defined CRONJOBS from crontab, run the following command
+
+```sh
+python manage.py crontab remove
+```
+
+**IMPORTANT: Make sure you've created `scheduled_job.log` this file into the home directory**
