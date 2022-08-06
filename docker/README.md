@@ -18,6 +18,7 @@
 - [Restart container at computer boot](#restart-container-at-computer-boot)
 - [Dockerize Laravel application with newrelic](#dockerize-laravel-application-with-newrelic)
 - [Dockerize FastAPI application with newrelic](#dockerize-fastapi-application-with-newrelic)
+- [Install python packages into the docker container](#install-python-packages-into-the-docker-container)
 
 ## Installing Docker
 
@@ -337,4 +338,13 @@ services:
       - .:/app
     ports:
       - 8001:8000
+```
+
+<br>
+
+## Install python packages into the docker container
+
+```bash
+$ docker exec -it <CONTAINER_ID> /bin/bash # open the container's console
+$ pip install <package_name>
 ```
