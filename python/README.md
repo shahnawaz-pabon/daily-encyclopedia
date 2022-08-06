@@ -12,6 +12,7 @@
 - [Keep specific keys from a list of dictionaries](#keep-specific-keys-from-a-list-of-dictionaries)
 - [Convert a query string to valid json](#convert-a-query-string-to-valid-json)
 - [Custom date formatter](#custom-date-formatter)
+- [Run fastapi project with virtual environment](#run-fastapi-project-with-virtual-environment)
 
 <br>
 
@@ -171,4 +172,15 @@ def get_weekday(custom_date):
 
 def get_abbreviated_weekday(custom_date):
     return custom_date.strftime("%a")
+```
+
+<br>
+
+## Run fastapi project with virtual environment
+
+```bash
+$ python3.x -m venv venv # setup virtual environment
+$ source venv/bin/activate # activation
+(venv)$ pip install -r requirements.txt
+(venv)$ uvicorn app.main:app
 ```
