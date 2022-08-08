@@ -7,4 +7,12 @@
 
 # Table of Contents
 
+- [Resources](#resources)
+
+## Resources
+
 - [Boto3 dynamodb official docs][boto3-dynamodb]
+
+<!-- Definitions -->
+
+[boto3-dynamodb]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#client
