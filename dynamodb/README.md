@@ -6,3 +6,5 @@
 </div>
 
 # Table of Contents
+
+- [Boto3 dynamodb official docs][boto3-dynamodb]
