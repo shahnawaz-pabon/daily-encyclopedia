@@ -7,7 +7,31 @@
 
 # Table of Contents
 
+- [Create dynamodb client](#create-dynamodb-client)
 - [Resources](#resources)
+
+## Create dynamodb client
+
+```python
+from starlette.config import Config
+import boto3
+
+config = Config(".env")
+
+# Make sure you have .env file having these keys
+AWS_ACCESS_KEY_ID: str = config("AWS_ACCESS_KEY_ID", cast=str)
+AWS_SECRET_ACCESS_KEY: str = config("AWS_SECRET_ACCESS_KEY", cast=str)
+REGION: str = config("REGION", cast=str)
+
+dynamodb_client = boto3.client(
+        "dynamodb",
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+        region_name=REGION,
+    )
+```
+
+<br>
 
 ## Resources
 
