@@ -13,6 +13,7 @@
 - [Monitor system processes with htop](#monitor-system-processes-with-htop)
 - [Copy a file from remote to local and vice versa via scp](#copy-a-file-from-remote-to-local-and-vice-versa-via-scp)
 - [Operate mysql at boot time](#operate-mysql-at-boot-time)
+- [Checking open ports](#checking-open-ports)
 
 ## Get the Audio Codec for your machine's model
 
@@ -88,4 +89,16 @@ sudo systemctl is-enabled mysql
 
 ```sh
 sudo systemctl enable mysql
+```
+
+<br>
+
+## Checking open ports
+
+```sh
+sudo lsof -i -P -n | grep LISTEN
+sudo netstat -tulpn | grep LISTEN
+sudo ss -tulpn | grep LISTEN
+sudo lsof -i:22 ## see a specific port such as 22 ##
+sudo nmap -sTU -O IP-address-Here
 ```
