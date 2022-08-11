@@ -19,6 +19,7 @@
 - [Dockerize Laravel application with newrelic](#dockerize-laravel-application-with-newrelic)
 - [Dockerize FastAPI application with newrelic](#dockerize-fastapi-application-with-newrelic)
 - [Install python packages into the docker container](#install-python-packages-into-the-docker-container)
+- [Copy a file from host to docker container and vice versa](#copy-a-file-from-host-to-docker-container-and-vice-versa)
 
 ## Installing Docker
 
@@ -347,4 +348,22 @@ services:
 ```bash
 $ docker exec -it <CONTAINER_ID> /bin/bash # open the container's console
 $ pip install <package_name>
+```
+
+<br>
+
+## Copy a file from host to docker container and vice versa
+
+Copy from host to docker container.
+
+```bash
+docker cp <container_id>:/path/to/file.ext .
+```
+
+<br>
+
+Copy from docker container to host.
+
+```sh
+docker cp file.ext <container_id>:/path/to/file.ext
 ```
