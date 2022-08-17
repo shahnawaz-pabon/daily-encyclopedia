@@ -12,8 +12,10 @@
 - [Delete a remote branch](#delete-a-remote-branch)
 - [Set git editor to vim](#set-git-editor-to-vim)
 - [Save username and password](#save-username-and-password)
+- [Removes latest commit from the stash, KEEPS changes](#removes-latest-commit-from-the-stash-keeps-changes)
+- [Removes latest commit from the stash, DELETES changes](#removes-latest-commit-from-the-stash-deletes-changes)
 
-<br>
+  <br>
 
 ## Revert back to the original branch
 
@@ -71,6 +73,22 @@ git config --global core.editor "vim"
 
 ```sh
 git config --global credential.helper store
+```
+
+<br>
+
+## Removes latest commit from the stash, KEEPS changes
+
+```sh
+git reset --soft HEAD~
+```
+
+<br>
+
+## Removes latest commit from the stash, DELETES changes
+
+```sh
+git reset --hard HEAD~
 ```
 
 <br>
