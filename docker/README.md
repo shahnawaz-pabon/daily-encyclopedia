@@ -20,6 +20,7 @@
 - [Dockerize FastAPI application with newrelic](#dockerize-fastapi-application-with-newrelic)
 - [Install python packages into the docker container](#install-python-packages-into-the-docker-container)
 - [Copy a file from host to docker container and vice versa](#copy-a-file-from-host-to-docker-container-and-vice-versa)
+- [Get fake REST APIs with json-server](#get-fake-rest-apis-with-json-server)
 
 ## Installing Docker
 
@@ -366,4 +367,26 @@ Copy from docker container to host.
 
 ```sh
 docker cp file.ext <container_id>:/path/to/file.ext
+```
+
+<br>
+
+## Get fake REST APIs with json-server
+
+Get a full fake REST API with zero coding in less than 30 seconds with [json-server](https://github.com/typicode/json-server).
+
+> **`docker-compose.yml`**
+
+```Dockerfile
+version: "3.8"
+services:
+  json-server:
+    image: vimagick/json-server
+    command: -H 0.0.0.0 -p 3000 -w db.json
+    init: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
 ```
