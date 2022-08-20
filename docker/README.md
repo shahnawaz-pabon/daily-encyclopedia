@@ -390,3 +390,21 @@ services:
       - ./data:/data
     restart: unless-stopped
 ```
+
+<br>
+
+> **`data/db.json`**
+
+```json
+{
+  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
+  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
+  "profile": { "name": "typicode" }
+}
+```
+
+> **`Up and running`**
+
+```sh
+docker-compose up -d
+```
