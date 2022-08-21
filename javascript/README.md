@@ -21,6 +21,8 @@ let index = a.findIndex((x) => x.prop2 === "yutu");
 console.log(index);
 ```
 
+<br>
+
 ### Make unique array of objects from the duplicate one
 
 ```js
@@ -42,6 +44,8 @@ console.log("Unique array");
 console.log(unique_array_of_objects);
 ```
 
+<br>
+
 ### Remove a specific object from the array of objects, matching a condition
 
 ```js
@@ -62,6 +66,8 @@ for (let i = 0; i < len; i++) {
 console.log(array);
 ```
 
+<br>
+
 ## Keep only specific key-value pairs from an array of objects
 
 ```js
@@ -81,4 +87,20 @@ const result = a.map((object) =>
 );
 
 console.log(result);
+```
+
+<br>
+
+###
+
+```js
+var arr = [];
+var len = oFullResponse.results.length;
+for (var i = 0; i < len; i++) {
+  arr.push({
+    key: oFullResponse.results[i].label,
+    sortable: true,
+    resizeable: true,
+  });
+}
 ```
