@@ -91,7 +91,7 @@ console.log(result);
 
 <br>
 
-###
+### Make an array of object literals in a loop
 
 ```js
 var arr = [];
