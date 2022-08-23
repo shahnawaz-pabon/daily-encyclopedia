@@ -8,6 +8,7 @@
 # Table of Contents
 
 - [Backup a Docker MySQL database with CRON](#backup-a-docker-mysql-database-with-cron)
+- [Taking data from the file and writing STDOUT to a new file](#taking-data-from-the-file-and-writing-stdout-to-a-new-file)
 
 ## Backup a Docker MySQL database with CRON
 
@@ -26,3 +27,21 @@ BACKUP_FILE_NAME="$(date +"%d-%m-%y-%H%M%S.sql.gz")"
 
 docker exec <CONTAINER_NAME> bash -c 'exec mysqldump --databases "$MYSQL_DATABASE" -h<DOCKER_MYSQL_SERVICE_NAME> -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"' > gzip > "$BACKUP_DIR"/"$BACKUP_FILE_NAME";
 ```
+
+<br>
+
+## Taking data from the file and writing STDOUT to a new file
+
+Let's say `sports.txt` has following lines
+
+```sh
+football
+basketball
+swimming
+```
+
+```sh
+cat sports.txt 1> new_sports.txt
+```
+
+If you run `cat new_sports.txt` you'll see the above lines.
