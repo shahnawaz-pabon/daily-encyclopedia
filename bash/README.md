@@ -9,6 +9,7 @@
 
 - [Backup a Docker MySQL database with CRON](#backup-a-docker-mysql-database-with-cron)
 - [Taking data from the file and writing STDOUT to a new file](#taking-data-from-the-file-and-writing-stdout-to-a-new-file)
+- [Pipe in the bash script](#pipe-in-the-bash-script)
 
 ## Backup a Docker MySQL database with CRON
 
@@ -45,3 +46,23 @@ cat sports.txt 1> new_sports.txt
 ```
 
 If you run `cat new_sports.txt` you'll see the above lines.
+
+<br>
+
+## Pipe in the bash script
+
+Consider a file `animals.txt`
+
+```sh
+magpie, bird
+emu, bird
+kangaroo, marsupial
+wallaby, marsupial
+shark, fish
+```
+
+We would like to count animals in each group with including pipes in our Bash script. Here is the command:
+
+```sh
+cat animals.txt | cut -d " " -f 2 | sort | uniq -c
+```
