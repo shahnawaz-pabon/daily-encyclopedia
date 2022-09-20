@@ -104,3 +104,35 @@ for (var i = 0; i < len; i++) {
   });
 }
 ```
+
+<br>
+
+### Remove array of objects from another array of objects
+
+```js
+// Here we will remove array b from array a
+var a = [
+  {
+    id: "1",
+    name: "a1",
+  },
+  {
+    id: "2",
+    name: "a2",
+  },
+  {
+    id: "3",
+    name: "a3",
+  },
+];
+
+var b = [
+  {
+    id: "2",
+    name: "a2",
+  },
+];
+
+c = a.filter((x) => !b.filter((y) => y.id === x.id).length);
+console.log(c);
+```
