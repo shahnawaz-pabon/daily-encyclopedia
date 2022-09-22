@@ -162,3 +162,24 @@ const rows = response_got_from_api.map((item, index) => {
 console.log(columns);
 console.log(rows);
 ```
+
+<br>
+
+### Callback function
+
+A `callback` function is a function that is passed as a parameter to another function and is performed when some action has been finished. The following is an example of a basic callback function that logs to the console once some actions have been performed.
+
+```js
+function modifyArray(arr, callback) {
+  // do something to arr here
+  arr.push(100);
+  // then execute the callback function that was passed
+  callback();
+}
+
+var arr = [1, 2, 3, 4, 5];
+
+modifyArray(arr, function () {
+  console.log("array has been modified", arr);
+});
+```
