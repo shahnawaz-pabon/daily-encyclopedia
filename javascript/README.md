@@ -136,3 +136,29 @@ var b = [
 c = a.filter((x) => !b.filter((y) => y.id === x.id).length);
 console.log(c);
 ```
+
+<br>
+
+### Create dynamic rows and columns for material ui data-grid
+
+```js
+const response_got_from_api = [
+  { id: 1, name: "Foo", age: 20 },
+  { id: 2, name: "Bar", age: 21 },
+  { id: 3, name: "MyFoo", age: 20 },
+];
+
+const columns = Object.keys(response_got_from_api[0]);
+
+const rows = response_got_from_api.map((item, index) => {
+  const returnValue = {};
+  returnValue["id"] = index + 1;
+  columns.forEach((key) => {
+    returnValue[key] = item[key];
+  });
+  return returnValue;
+});
+
+console.log(columns);
+console.log(rows);
+```
