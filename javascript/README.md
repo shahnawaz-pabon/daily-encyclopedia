@@ -242,3 +242,23 @@ c.add(9);
 // now we can access the private variable in the following way
 c.retrieve(); // => The counter is currently at: 14
 ```
+
+<br>
+
+### Difference between var and let
+
+```js
+// var has function scope
+// let has block scope
+function userDetails(username) {
+  if (username) {
+    console.log(salary); // undefined due to hoisting
+    console.log(age); // ReferenceError: Cannot access 'age' before initialization
+    let age = 30;
+    var salary = 10000;
+  }
+  console.log(salary); //10000 (accessible to due function scope)
+  console.log(age); //error: age is not defined(due to block scope)
+}
+userDetails("John");
+```
