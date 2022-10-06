@@ -5,6 +5,10 @@
   <h1>SQL Server</h1>
 </div>
 
+# Table of Contents
+
+- [Update a column from another column's value with concat](#update-a-column-from-another-columns-value-with-concat)
+
 ## Update a column from another column's value with concat
 
 ```sql
