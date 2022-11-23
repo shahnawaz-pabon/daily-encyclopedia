@@ -14,6 +14,7 @@
 - [Save username and password](#save-username-and-password)
 - [Removes latest commit from the stash, KEEPS changes](#removes-latest-commit-from-the-stash-keeps-changes)
 - [Removes latest commit from the stash, DELETES changes](#removes-latest-commit-from-the-stash-deletes-changes)
+- [Set remote url with access token](#set-remote-url-with-access-token)
 
   <br>
 
@@ -92,3 +93,15 @@ git reset --hard HEAD~
 ```
 
 <br>
+
+## Set remote url with access token
+
+Git has removed their password authentication on August 13, 2021. So to push to your remote repository, you can do the following:
+
+```sh
+# see the origin's url
+git remote -v
+# remove origin's url from the git config
+git remote remove origin
+git remote add origin https://<githubtoken>@github.com/<username>/<repositoryname>.git
+```
