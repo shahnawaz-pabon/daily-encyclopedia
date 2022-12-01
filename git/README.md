@@ -7,6 +7,7 @@
 
 # Table of Contents
 
+- [Awesome github profiles](https://zzetao.github.io/awesome-github-profile/)
 - [Revert back to the original branch](#revert-back-to-the-original-branch)
 - [Delete a local branch](#delete-a-local-branch)
 - [Delete a remote branch](#delete-a-remote-branch)
