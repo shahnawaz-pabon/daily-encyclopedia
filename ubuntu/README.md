@@ -14,6 +14,9 @@
 - [Copy a file from remote to local and vice versa via scp](#copy-a-file-from-remote-to-local-and-vice-versa-via-scp)
 - [Operate mysql at boot time](#operate-mysql-at-boot-time)
 - [Checking open ports](#checking-open-ports)
+- [Find the PID](#find-the-pid)
+- [Stop application running in a specific port](#stop-application-running-in-a-specific-port)
+- [Find the PID for a specific process](#find-the-pid-for-a-specific-process)
 
 ## Get the Audio Codec for your machine's model
 
@@ -101,4 +104,22 @@ sudo netstat -tulpn | grep LISTEN
 sudo ss -tulpn | grep LISTEN
 sudo lsof -i:22 ## see a specific port such as 22 ##
 sudo nmap -sTU -O IP-address-Here
+```
+
+## Find the PID
+
+```sh
+ps -ef | grep "command name"
+```
+
+## Stop application running in a specific port
+
+```sh
+kill -9 $(lsof -t -i:8080)
+```
+
+## Find the PID for a specific process
+
+```sh
+ps aux | grep java
 ```

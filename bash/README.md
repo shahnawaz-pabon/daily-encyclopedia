@@ -11,8 +11,6 @@
 - [Taking data from the file and writing STDOUT to a new file](#taking-data-from-the-file-and-writing-stdout-to-a-new-file)
 - [Pipe in the bash script](#pipe-in-the-bash-script)
 - [Using nohup to put the task in the background](#using-nohup-to-put-the-task-in-the-background)
-- [Find the PID](#find-the-pid)
-- [Stop application running in a specific port](#stop-application-running-in-a-specific-port)
 
 ## Backup a Docker MySQL database with CRON
 
@@ -74,16 +72,4 @@ cat animals.txt | cut -d " " -f 2 | sort | uniq -c
 
 ```sh
 nohup my_command > my.log 2>&1 &
-```
-
-## Find the PID
-
-```sh
-ps -ef | grep "command name"
-```
-
-## Stop application running in a specific port
-
-```sh
-kill -9 $(lsof -t -i:8080)
 ```
