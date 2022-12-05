@@ -11,6 +11,7 @@
 - [Taking data from the file and writing STDOUT to a new file](#taking-data-from-the-file-and-writing-stdout-to-a-new-file)
 - [Pipe in the bash script](#pipe-in-the-bash-script)
 - [Using nohup to put the task in the background](#using-nohup-to-put-the-task-in-the-background)
+- [Store docker container name in bash variable](#store-docker-container-name-in-bash-variable)
 
 ## Backup a Docker MySQL database with CRON
 
@@ -72,4 +73,12 @@ cat animals.txt | cut -d " " -f 2 | sort | uniq -c
 
 ```sh
 nohup my_command > my.log 2>&1 &
+```
+
+## Store docker container name in bash variable
+
+```sh
+#!/bin/sh
+CONTAINER_NAME=$(docker ps -a --format "{{.Names}}" | grep "boring")
+echo $CONTAINER_NAME
 ```
