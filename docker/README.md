@@ -21,6 +21,7 @@
 - [Install python packages into the docker container](#install-python-packages-into-the-docker-container)
 - [Copy a file from host to docker container and vice versa](#copy-a-file-from-host-to-docker-container-and-vice-versa)
 - [Get fake REST APIs with json-server](#get-fake-rest-apis-with-json-server)
+- [List running containers](#list-running-containers)
 
 ## Installing Docker
 
@@ -407,4 +408,12 @@ services:
 
 ```sh
 docker-compose up -d
+```
+
+<br>
+
+## List running containers
+
+```sh
+docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'
 ```
