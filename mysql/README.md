@@ -8,6 +8,7 @@
 # Table of Contents
 
 - [Password Validation Component System Variables](#password-validation-component-system-variables)
+- [Individual column's counter for different values](#individual-columns-counter-for-different-values)
 
 ## Password Validation Component System Variables
 
@@ -39,4 +40,10 @@ Then, we will be able to change the password by running this command for the `ro
 
 ```sh
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+```
+
+## Individual column's counter for different values
+
+```sql
+SELECT age, COUNT(*) FROM campers GROUP BY age;
 ```
