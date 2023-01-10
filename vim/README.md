@@ -193,3 +193,10 @@ p
 ```sh
 /\cstring
 ```
+
+## Adding quotes at the start and end of each line
+
+```sh
+# this command will add quotes at the start and end of each line with comma at the end
+:%s/\(.*\)/'\1',
+```
