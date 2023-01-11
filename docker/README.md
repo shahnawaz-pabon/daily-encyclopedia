@@ -22,6 +22,7 @@
 - [Copy a file from host to docker container and vice versa](#copy-a-file-from-host-to-docker-container-and-vice-versa)
 - [Get fake REST APIs with json-server](#get-fake-rest-apis-with-json-server)
 - [List running containers](#list-running-containers)
+- [Docker container's logs with finding a specific string](#)
 
 ## Installing Docker
 
@@ -416,4 +417,10 @@ docker-compose up -d
 
 ```sh
 docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'
+```
+
+## Docker container's logs with finding a specific string
+
+```sh
+docker logs <container_name> 2>&1 | grep <string>
 ```
