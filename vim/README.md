@@ -200,3 +200,9 @@ p
 # this command will add quotes at the start and end of each line with comma at the end
 :%s/\(.*\)/'\1',
 ```
+
+## Show difference between two files
+
+```sh
+vimdiff file1.txt file2.txt
+```
