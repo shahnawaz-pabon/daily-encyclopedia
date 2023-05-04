@@ -22,7 +22,8 @@
 - [Copy a file from host to docker container and vice versa](#copy-a-file-from-host-to-docker-container-and-vice-versa)
 - [Get fake REST APIs with json-server](#get-fake-rest-apis-with-json-server)
 - [List running containers](#list-running-containers)
-- [Docker container's logs with finding a specific string](#)
+- [Docker container's logs with finding a specific string](#docker-containers-logs-with-finding-a-specific-string)
+- [Docker container's logs since specific time](#docker-containers-logs-since-specific-time)
 
 ## Installing Docker
 
@@ -423,4 +424,13 @@ docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'
 
 ```sh
 docker logs <container_name> 2>&1 | grep <string>
+```
+
+## Docker container's logs since specific time
+
+```sh
+# since last 2 minutes
+docker logs --since=2m <container_id>
+# since last 1 hour
+docker logs --since=1h <container_id>
 ```
