@@ -17,6 +17,7 @@
 - [Find the PID](#find-the-pid)
 - [Stop application running in a specific port](#stop-application-running-in-a-specific-port)
 - [Find the PID for a specific process](#find-the-pid-for-a-specific-process)
+- [Anydesk's display server not supported error](#anydesks-display-server-not-supported-error)
 
 ## Get the Audio Codec for your machine's model
 
@@ -122,4 +123,55 @@ kill -9 $(lsof -t -i:8080)
 
 ```sh
 ps aux | grep java
+```
+
+## Anydesk's display server not supported error
+
+Configure login password. This password is `P@ssw0rd`.
+
+```sh
+echo "P@ssw0rd" | sudo anydesk --set-password
+```
+
+Configure GDM config. Please unmask the following lines from `/etc/gdm3/custom.conf` file.
+
+```conf
+WaylandEnable=false
+AutomaticLoginEnable = true
+AutomaticLogin = $USERNAME
+```
+
+```sh
+sudo vim /etc/gdm3/custom.conf
+```
+
+```conf
+# GDM configuration storage
+#
+# See /usr/share/gdm/gdm.schemas for a list of available options.
+
+[daemon]
+# Uncomment the line below to force the login screen to use Xorg
+WaylandEnable=false
+
+# Enabling automatic login
+AutomaticLoginEnable = true
+AutomaticLogin = $USERNAME
+
+# Enabling timed login
+#  TimedLoginEnable = true
+#  TimedLogin = user1
+#  TimedLoginDelay = 10
+
+[security]
+
+[xdmcp]
+
+[chooser]
+
+[debug]
+# Uncomment the line below to turn on debugging
+# More verbose logs
+# Additionally lets the X server dump core if it crashes
+#Enable=true
 ```
