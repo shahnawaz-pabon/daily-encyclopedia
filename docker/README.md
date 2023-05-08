@@ -447,3 +447,31 @@ ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
 ```
+
+**docker-compose.yml**
+
+```yml
+version: "3"
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - SA_PASSWORD=YourStrong!Passw0rd
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+  app:
+    build:
+      context: .
+      args:
+        JAR_FILE: build/libs/*.jar
+    depends_on:
+      - redis
+      - mssql
+    ports:
+      - "8080:8080"
+```
