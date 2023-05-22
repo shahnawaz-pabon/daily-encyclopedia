@@ -24,7 +24,6 @@
 - [List running containers](#list-running-containers)
 - [Docker container's logs with finding a specific string](#docker-containers-logs-with-finding-a-specific-string)
 - [Docker container's logs since specific time](#docker-containers-logs-since-specific-time)
-- [Dockerize spring boot application with redis and mssql](#dockerize-spring-boot-application-with-redis-and-mssql)
 
 ## Installing Docker
 
@@ -434,44 +433,4 @@ docker logs <container_name> 2>&1 | grep <string>
 docker logs --since=2m <container_id>
 # since last 1 hour
 docker logs --since=1h <container_id>
-```
-
-## Dockerize spring boot application with redis and mssql
-
-**Dockerfile**
-
-```Dockerfile
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
-```
-
-**docker-compose.yml**
-
-```yml
-version: "3"
-services:
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-  mssql:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    environment:
-      - SA_PASSWORD=YourStrong!Passw0rd
-      - ACCEPT_EULA=Y
-    ports:
-      - "1433:1433"
-  app:
-    build:
-      context: .
-      args:
-        JAR_FILE: build/libs/*.jar
-    depends_on:
-      - redis
-      - mssql
-    ports:
-      - "8080:8080"
 ```
