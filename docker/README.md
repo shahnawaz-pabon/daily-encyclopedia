@@ -16,7 +16,6 @@
 - [List and remove all images](#list-and-remove-all-images)
 - [List and remove all exited containers](#list-and-remove-all-exited-containers)
 - [Restart container at computer boot](#restart-container-at-computer-boot)
-- [Dockerize Laravel application with newrelic](#dockerize-laravel-application-with-newrelic)
 - [Install python packages into the docker container](#install-python-packages-into-the-docker-container)
 - [Copy a file from host to docker container and vice versa](#copy-a-file-from-host-to-docker-container-and-vice-versa)
 - [Get fake REST APIs with json-server](#get-fake-rest-apis-with-json-server)
