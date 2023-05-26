@@ -10,6 +10,7 @@
 - [MongoDB Schema Design Best Practices](https://www.mongodb.com/developer/article/mongodb-schema-design-best-practices/)
 - [MongoDB Shell Commands](mongodb-shell-commands)
 - [Miscellaneous Queries](#miscellaneous-queries)
+- [Pagination with linked collections](#pagination-with-linked-collections)
 
 ## MongoDB Shell Commands
 
@@ -159,4 +160,25 @@ pipeline = [
 response = collection_name.aggregate(pipeline).to_list(length=None)
 
 # return response
+```
+
+## Pagination with linked collections
+
+```js
+const { page = 1, size = 10 } = req.query;
+
+/**
+ * Pagination Details
+ * User - Collection
+ * Portfolio - Collection
+ */
+const count = await User.countDocuments();
+const totalPages = Math.ceil(count / size);
+const currentPage = parseInt(page);
+
+// API logic for getting users with pagination
+const users = await User.find()
+  .skip((currentPage - 1) * size)
+  .limit(size)
+  .populate("portfolio");
 ```
