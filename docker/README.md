@@ -22,6 +22,7 @@
 - [List running containers](#list-running-containers)
 - [Docker container's logs with finding a specific string](#docker-containers-logs-with-finding-a-specific-string)
 - [Docker container's logs since specific time](#docker-containers-logs-since-specific-time)
+- [Docker container's logs with searching pattern](#docker-containers-logs-with-searching-pattern)
 
 ## Installing Docker
 
@@ -259,4 +260,11 @@ docker logs <container_name> 2>&1 | grep <string>
 docker logs --since=2m <container_id>
 # since last 1 hour
 docker logs --since=1h <container_id>
+```
+
+## Docker container's logs with searching pattern
+
+```sh
+# since last 1 hour with the text "searching string"
+docker logs --since=1h <container_id> | grep "searching string"
 ```
