@@ -23,6 +23,7 @@
 - [Docker container's logs with finding a specific string](#docker-containers-logs-with-finding-a-specific-string)
 - [Docker container's logs since specific time](#docker-containers-logs-since-specific-time)
 - [Docker container's logs with searching pattern](#docker-containers-logs-with-searching-pattern)
+- [Remove all unused docker images](#remove-all-unused-docker-images)
 
 ## Installing Docker
 
@@ -267,4 +268,11 @@ docker logs --since=1h <container_id>
 ```sh
 # since last 1 hour with the text "searching string"
 docker logs --since=1h <container_id> | grep "searching string"
+```
+
+## Remove all unused docker images
+
+```sh
+# this will remove all images without at least one container associated to them
+docker image prune -a
 ```
