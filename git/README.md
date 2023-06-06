@@ -17,6 +17,7 @@
 - [Removes latest commit from the stash, DELETES changes](#removes-latest-commit-from-the-stash-deletes-changes)
 - [Set remote url with access token](#set-remote-url-with-access-token)
 - [Changing git commit message after push](#changing-git-commit-message-after-push)
+- [Change the url of a remote git repository](#change-the-url-of-a-remote-git-repository)
 
   <br>
 
@@ -116,4 +117,12 @@ git remote add origin https://<githubtoken>@github.com/<username>/<repositorynam
 git commit --amend -m "New commit message"
 # You should probably refrain from erasing any modifications that someone else may have submitted to the same branch. The option —force-with-lease is the safest since it will terminate if any upstream modifications are made.
 git push --force-with-lease <repository> <branch>
+```
+
+<br>
+
+## Change the url of a remote git repository
+
+```sh
+git remote set-url origin <new_remote_repository_url>
 ```
