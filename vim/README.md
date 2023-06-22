@@ -206,3 +206,18 @@ p
 ```sh
 vimdiff file1.txt file2.txt
 ```
+
+## Uncomment multiple lines
+
+```sh
+# here 11 is the line number from and 12 is the line number to
+# this will uncomment from line 11 to 12
+:11,12s/#//
+```
+
+## Comment out multiple lines
+
+```sh
+# this will comment out from line 11 to 12
+:11,12s/^/#/
+```
