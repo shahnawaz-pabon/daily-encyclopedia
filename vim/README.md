@@ -5,9 +5,35 @@
   <h1>Vim</h1>
 </div>
 
-## Commands
+# Table of Contents
 
-### Jumps to the end of the file
+- [Jumps to the end of the file](#jumps-to-the-end-of-the-file)
+- [Enters insert mode at end of current line](#enters-insert-mode-at-end-of-current-line)
+- [Customize your vim with .vimrc](#customize-your-vim-with-vimrc)
+- [Delete a single line](#delete-a-single-line)
+- [Delete all the lines](#delete-all-the-lines)
+- [Delete a range of lines](#delete-a-range-of-lines)
+- [Delete the line with a custom pattern](#delete-the-line-with-a-custom-pattern)
+- [Delete all blank lines](#delete-all-blank-lines)
+- [Delete lines that start with a specific letter](#delete-lines-that-start-with-a-specific-letter)
+- [Delete all lines after line number](#delete-all-lines-after-line-number)
+- [Delete all lines before line number](#delete-all-lines-before-line-number)
+- [Copy the current line](#copy-the-current-line)
+- [Copy selected text to the clipboard](#copy-selected-text-to-the-clipboard)
+- [Cut current line](#cut-current-line)
+- [Copy to end of line](#copy-to-end-of-line)
+- [Cut to end of line](#cut-to-end-of-line)
+- [Paste clipboard contents](#paste-clipboard-contents)
+- [Search word from the top to bottom](#search-word-from-the-top-to-bottom)
+- [Search word from the bottom to top](#search-word-from-the-bottom-to-top)
+- [Search the word under the cursor](#search-the-word-under-the-cursor)
+- [Search a string, case insensitive](#search-a-string-case-insensitive)
+- [Adding quotes at the start and end of each line](#adding-quotes-at-the-start-and-end-of-each-line)
+- [Show difference between two files](#show-difference-between-two-files)
+- [Uncomment multiple lines](#uncomment-multiple-lines)
+- [Comment out multiple lines](#comment-out-multiple-lines)
+
+## Jumps to the end of the file
 
 ```sh
 :$
@@ -15,13 +41,13 @@
 
 <br>
 
-### Enters insert mode at end of current line
+## Enters insert mode at end of current line
 
 ```sh
 Shift + A
 ```
 
-### Customize your vim with .vimrc
+## Customize your vim with .vimrc
 
 Create a file `.vimrc` in your home directory, write the following code and save it:
 
@@ -79,17 +105,17 @@ Then add the following line in your `~/.bashrc` file (if not found, create the f
 alias vim="vim -S ~/.vimrc"
 ```
 
-### Delete a single line
+## Delete a single line
 
 Bring your cursor to the line you want to delete, then write `:d` and press `Enter`. Or simply you can quickly press `dd` to delete the current line.
 
-### Delete all the lines
+## Delete all the lines
 
 ```sh
 :%d
 ```
 
-### Delete a range of lines
+## Delete a range of lines
 
 `:[Starting Line Number],[Ending Line Number]d`
 
@@ -98,7 +124,7 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 :5,7d
 ```
 
-### Delete the line with a custom pattern
+## Delete the line with a custom pattern
 
 `:g /<WORD>/d`
 
@@ -107,27 +133,27 @@ Bring your cursor to the line you want to delete, then write `:d` and press `Ent
 :g /linux/d
 ```
 
-### Delete all blank lines
+## Delete all blank lines
 
 ```sh
 :g /^$/d
 ```
 
-### Delete lines that start with a specific letter
+## Delete lines that start with a specific letter
 
 ```sh
 # Delete all lines that start with letter "S"
 :g /^S/d
 ```
 
-### Delete all lines after line number
+## Delete all lines after line number
 
 ```sh
 # If your cursor is on line number 5, then this command will delete all lines below line number 5
 :+1,$d
 ```
 
-### Delete all lines before line number
+## Delete all lines before line number
 
 ```sh
 # If your cursor is on line number 5, then this command will delete all lines before line number 5
