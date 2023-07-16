@@ -175,3 +175,15 @@ AutomaticLogin = $USERNAME
 # Additionally lets the X server dump core if it crashes
 #Enable=true
 ```
+
+### File list that are modified between date ranges
+
+```sh
+find /path/to/directory -type f -newermt "start_date" ! -newermt "end_date"
+```
+
+e.g
+
+```sh
+find /path/to/directory -type f -newermt "2023-07-01" ! -newermt "2023-07-15"
+```
