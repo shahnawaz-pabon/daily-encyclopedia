@@ -184,3 +184,10 @@ $ source venv/bin/activate # activation
 (venv)$ pip install -r requirements.txt
 (venv)$ uvicorn app.main:app
 ```
+
+## Generate requirements.txt with updated packages
+
+```sh
+# this will add updated packages into the requirements.txt file except pkg_resources
+pip freeze | grep -v "pkg_resources" > requirements.txt
+```
