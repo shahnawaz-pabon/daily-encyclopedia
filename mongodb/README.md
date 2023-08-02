@@ -7,10 +7,20 @@
 
 # Table of Contents
 
+- [Setup mongodb via docker](#setup-mongodb-via-docker)
 - [MongoDB Schema Design Best Practices](https://www.mongodb.com/developer/article/mongodb-schema-design-best-practices/)
 - [MongoDB Shell Commands](mongodb-shell-commands)
 - [Miscellaneous Queries](#miscellaneous-queries)
 - [Pagination with linked collections](#pagination-with-linked-collections)
+
+## Setup mongodb via docker
+
+```sh
+# create mongodb_data directory with writable permission by docker process
+mkdir -m 777 mongodb_data
+export MONGODB_VERSION=6.0-ubi8
+docker run --name mongodb -d -p 27017:27017 -v $(pwd)/mongodb_data:/data/db mongodb/mongodb-community-server:$MONGODB_VERSION
+```
 
 ## MongoDB Shell Commands
 
