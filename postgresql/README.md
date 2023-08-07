@@ -28,3 +28,20 @@ SELECT table_name
 ```
 
 <br>
+
+```yml
+version: "3.8"
+services:
+  db:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+volumes:
+  postgres-data:
+```
