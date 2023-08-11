@@ -9,6 +9,7 @@
 
 - [Update a column from another column's value with concat](#update-a-column-from-another-columns-value-with-concat)
 - [Error IDENTITY_INSERT is set to OFF](#error-identity_insert-is-set-to-off)
+- [Get calculated salary with considering other benefits](#get-calculated-salary-with-considering-other-benefits)
 
 ## Update a column from another column's value with concat
 
