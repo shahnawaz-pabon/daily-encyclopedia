@@ -187,3 +187,9 @@ e.g
 ```sh
 find /path/to/directory -type f -newermt "2023-07-01" ! -newermt "2023-07-15"
 ```
+
+###
+
+```sh
+netstat -tulpn
+```
