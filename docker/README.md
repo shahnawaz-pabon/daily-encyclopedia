@@ -24,6 +24,7 @@
 - [Docker container's logs since specific time](#docker-containers-logs-since-specific-time)
 - [Docker container's logs with searching pattern](#docker-containers-logs-with-searching-pattern)
 - [Remove all unused docker images](#remove-all-unused-docker-images)
+- [Show the restart policy of a running docker container](#show-the-restart-policy-of-a-running-docker-container)
 
 ## Installing Docker
 
@@ -275,4 +276,10 @@ docker logs --since=1h <container_id> | grep "searching string"
 ```sh
 # this will remove all images without at least one container associated to them
 docker image prune -a
+```
+
+## Show the restart policy of a running docker container
+
+```sh
+docker inspect --format '{{.HostConfig.RestartPolicy.Name}}' <container-id>
 ```
