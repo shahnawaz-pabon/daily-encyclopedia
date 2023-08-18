@@ -283,3 +283,9 @@ docker image prune -a
 ```sh
 docker inspect --format '{{.HostConfig.RestartPolicy.Name}}' <container-id>
 ```
+
+## Restart policy for an already running container named redis
+
+```sh
+docker update --restart unless-stopped redis
+```
