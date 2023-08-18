@@ -25,6 +25,8 @@
 - [Docker container's logs with searching pattern](#docker-containers-logs-with-searching-pattern)
 - [Remove all unused docker images](#remove-all-unused-docker-images)
 - [Show the restart policy of a running docker container](#show-the-restart-policy-of-a-running-docker-container)
+- [Restart policy for an already running container named redis](#restart-policy-for-an-already-running-container-named-redis)
+- [Change the restart policy for all running containers](#change-the-restart-policy-for-all-running-containers)
 
 ## Installing Docker
 
@@ -288,4 +290,10 @@ docker inspect --format '{{.HostConfig.RestartPolicy.Name}}' <container-id>
 
 ```sh
 docker update --restart unless-stopped redis
+```
+
+## Change the restart policy for all running containers
+
+```sh
+docker update --restart unless-stopped $(docker ps -q)
 ```
