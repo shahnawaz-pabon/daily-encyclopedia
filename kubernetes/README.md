@@ -9,14 +9,27 @@
 
 - [Prerequisites](#prerequisites)
   - [minikube](#minikube)
+    - [Linux Installation](#linux-installation)
+    - [Start the cluster](#start-the-cluster)
   - [kubectl](#kubectl)
 
 ## Prerequisites
 
 ### minikube
 
-`minikube` is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
-All you need is Docker (or similarly compatible) container or a Virtual Machine environment, and Kubernetes is a single command away: `minikube start`
+`minikube` simplifies Kubernetes for local development, providing an accessible learning and development platform. With just Docker (or a compatible container system) or a Virtual Machine setup, you can start Kubernetes with a single command: `minikube start`.
+
+#### Linux Installation
+
+```sh
+# To install the latest minikube stable release on x86-64 Linux using Debian package
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
+```
+
+#### Start the cluster
+
+In case `minikube` encounters issues while starting, refer to the [drivers page](https://minikube.sigs.k8s.io/docs/drivers/) for assistance in configuring a compatible container or virtual machine manager.
 
 ### kubectl
 
