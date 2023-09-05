@@ -11,6 +11,7 @@
   - [minikube](#minikube)
     - [Linux Installation](#linux-installation)
     - [Start the cluster](#start-the-cluster)
+    - [Interact with the cluster](#interact-with-the-cluster)
   - [kubectl](#kubectl)
 
 ## Prerequisites
@@ -31,16 +32,24 @@ sudo dpkg -i minikube_latest_amd64.deb
 
 In case `minikube` encounters issues while starting, refer to the [drivers page](https://minikube.sigs.k8s.io/docs/drivers/) for assistance in configuring a compatible container or virtual machine manager.
 
+#### Interact with the cluster
+
+```sh
+# Start a new terminal, and leave this running.
+minikube dashboard
+```
+
+Next, return to the terminal where you initiated the `minikube start` command.
+
 ### kubectl
 
-[Install tools](https://kubernetes.io/docs/tasks/tools/#kubectl) for installation instructions(Manual Installation).
-Alternatively, minikube can download the appropriate version of kubectl and you should be able to use it like this:
+For installation instructions, please refer to the [Install tools](https://kubernetes.io/docs/tasks/tools/#kubectl) section (Manual Installation). Alternatively, Minikube can automatically download the necessary version of kubectl, allowing you to use it as follows:
 
 ```sh
 minikube kubectl -- get pods -A
 ```
 
-You can also make your life easier by adding the following to your shell config:
+Simplify your workflow by including the following in your shell configuration:
 
 ```sh
 alias kubectl="minikube kubectl --"
