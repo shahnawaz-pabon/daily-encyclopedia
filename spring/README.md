@@ -2,12 +2,12 @@
   <a href="https://spring.io/">
     <img alt="spring" src="../logos/spring.png" height="96"/>
   </a>
-  <h1>Spring</h1>
 </div>
 
 # Table of Contents
 
 - [Dockerize spring boot application with redis and mssql](#dockerize-spring-boot-application-with-redis-and-mssql)
+- [Setting Up Swagger Documentation](#setting-up-swagger-documentation)
 - [Parse datetime with specific locale](#parse-datetime-with-specific-locale)
 
 ## Dockerize spring boot application with redis and mssql
@@ -60,6 +60,27 @@ services:
     ports:
       - "6379:6379"
 ```
+
+## Setting Up Swagger Documentation
+
+### Include the `springdoc` dependency in your `build.gradle` file:
+
+```groovy
+implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+```
+You can find this package on [Maven Repository](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui).
+
+### Create a Swagger Configuration File
+
+Create a configuration file for Swagger, for example, SwaggerConfig.java, and [add the following content](https://gist.github.com/shahnawaz-pabon/7fa8ac82947c6bd1d54fcd33eecf4d2a):
+
+### Access Swagger UI
+
+You can access the Swagger UI by navigating to the following URL in your web browser, replacing your_port with your actual port number:
+
+[http://localhost:your_port/swagger-ui/index.html](http://localhost:your_port/swagger-ui/index.html)
+
+<br>
 
 ## Parse datetime with specific locale
 
