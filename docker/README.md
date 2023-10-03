@@ -27,6 +27,7 @@
 - [Show the restart policy of a running docker container](#show-the-restart-policy-of-a-running-docker-container)
 - [Restart policy for an already running container named redis](#restart-policy-for-an-already-running-container-named-redis)
 - [Change the restart policy for all running containers](#change-the-restart-policy-for-all-running-containers)
+- [See running container names](#see-running-container-names)
 
 ## Installing Docker
 
@@ -296,4 +297,10 @@ docker update --restart unless-stopped redis
 
 ```sh
 docker update --restart unless-stopped $(docker ps -q)
+```
+
+## See running container names
+
+```sh
+docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"
 ```
