@@ -128,3 +128,9 @@ Locale localeBn = new Locale("bn", "BD");
 DateFormat dateFormatBn = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.SHORT, localeBn);
 String dateBn = dateFormatBn.format(new Date());
 ```
+
+## Solve time zone issue while saving data into the sql server
+
+```sh
+spring.datasource.url=jdbc:sqlserver://192.168.1.20:1433;databaseName=IEIMS_DEV_DM;serverTimezone=Asia/Dhaka;useLegacyDatetimeCode=false
+```
