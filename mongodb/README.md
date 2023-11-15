@@ -9,7 +9,7 @@
 
 - [Setup mongodb via docker](#setup-mongodb-via-docker)
 - [MongoDB Schema Design Best Practices](https://www.mongodb.com/developer/article/mongodb-schema-design-best-practices/)
-- [MongoDB Shell Commands](mongodb-shell-commands)
+- [MongoDB Shell Commands](#mongodb-shell-commands)
 - [Miscellaneous Queries](#miscellaneous-queries)
 - [Pagination with linked collections](#pagination-with-linked-collections)
 
@@ -33,6 +33,30 @@ db.collection_name.updateMany({}, {$unset:{"notification_details.emergency_label
 
 # remove multiple documents
 db.collection_name.remove({"id":{$nin:[1637042527, 1637127944, 1637213711]}})
+
+db.users.aggregate([
+  {
+    $match: {
+      email: "admin@admin.com"
+    }
+  },
+  {
+    $unwind: "$schedule"
+  },
+  {
+    $match: {
+      "schedule.dayOfWeek": "Monday"
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      dayOfWeek: "$schedule.dayOfWeek",
+      timeSlots: "$schedule.timeSlots"
+    }
+  }
+])
+
 ```
 
 ## Miscellaneous Queries
