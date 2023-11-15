@@ -9,6 +9,7 @@
 
 - [Setup mongodb via docker](#setup-mongodb-via-docker)
 - [MongoDB Schema Design Best Practices](https://www.mongodb.com/developer/article/mongodb-schema-design-best-practices/)
+- [Query Keywords and Functions](#query-keywords-and-functions)
 - [MongoDB Shell Commands](#mongodb-shell-commands)
 - [Miscellaneous Queries](#miscellaneous-queries)
 - [Pagination with linked collections](#pagination-with-linked-collections)
@@ -22,6 +23,16 @@ export MONGODB_VERSION=6.0-ubi8
 docker run --name mongodb -d -p 27017:27017 -v $(pwd)/mongodb_data:/data/db mongodb/mongodb-community-server:$MONGODB_VERSION
 ```
 
+## Query Keywords and Functions
+
+- **`$unwind`**: This operator breaks down an array field within input documents, producing a separate document for each element.
+
+- **`$match`**: This operator identifies and retrieves existing documents in the database that satisfy specified conditions.
+
+- **`$project`**: This operator enables the extraction of specific fields from the collection.
+
+- **`aggregate`**: Aggregation in MongoDB is like a series of steps (pipeline) for handling lots of documents. Each step can filter, sort, group, reshape, or modify the documents in the collection. It's a way to process and transform data efficiently.
+
 ## MongoDB Shell Commands
 
 ```sh
@@ -32,7 +43,11 @@ db.collection_name.updateMany({}, {$set:{"like_count": 1}})
 db.collection_name.updateMany({}, {$unset:{"notification_details.emergency_label": ""}})
 
 # remove multiple documents
-db.collection_name.remove({"id":{$nin:[1637042527, 1637127944, 1637213711]}})
+db.collection_name.remove({
+  id: { $nin: ['1637042527', '1637127944', '1637213711'] }
+})
+
+# getting a user's schedule on Monday whose email is admin@admin.com
 
 db.users.aggregate([
   {
@@ -56,7 +71,6 @@ db.users.aggregate([
     }
   }
 ])
-
 ```
 
 ## Miscellaneous Queries
