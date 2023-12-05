@@ -27,6 +27,7 @@
 - [PostGIS](./postgis/README.md)
 - [PostgreSQL](./postgresql/README.md)
 - [Python](./python/README.md)
+- [R](./r/README.md)
 - [ReactNative](./react-native/README.md)
 - [Spring](./spring/README.md)
 - [SQLServer](./sql-server/README.md)
