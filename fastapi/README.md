@@ -63,3 +63,47 @@ services:
     ports:
       - 8001:8000
 ```
+
+
+```python
+from fastapi import FastAPI, APIRouter
+from fastapi.exceptions import HTTPException
+from pydantic import BaseModel
+from smtplib import SMTP_SSL
+from email.mime.text import MIMEText
+
+router = APIRouter()
+
+
+OWN_EMAIL = ""  # this should be the email which the email will be sent from
+OWN_EMAIL_PASSWORD = ""  # this should be app password
+
+
+class EmailBody(BaseModel):
+    to: str
+    subject: str
+    message: str
+
+
+@router.post("/send-email")
+async def send_email(body: EmailBody):
+    try:
+        msg = MIMEText(body.message, "html")
+        msg['Subject'] = body.subject
+        msg['From'] = f'Denolyrics <{OWN_EMAIL}>'
+        msg['To'] = body.to
+
+        port = 465  # For SSL
+
+        # Connect to the email server
+        server = SMTP_SSL("smtp.gmail.com", port)
+        server.login(OWN_EMAIL, OWN_EMAIL_PASSWORD)
+
+        # Send the email
+        server.send_message(msg)
+        server.quit()
+        return {"message": "Email sent successfully"}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=e)
+```
