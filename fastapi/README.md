@@ -8,6 +8,7 @@
 # Table of Contents
 
 - [Dockerize FastAPI application with newrelic](#dockerize-fastapi-application-with-newrelic)
+- [Sending email](#sending-email)
 
 ## Dockerize FastAPI application with newrelic
 
@@ -64,6 +65,9 @@ services:
       - 8001:8000
 ```
 
+## Sending email
+
+To seamlessly utilize this feature, ensure you possess a Gmail account. In the past, enabling **`"Less secure app access"`** within your Google account settings was a prerequisite. However, the process has evolved. Presently, you can effortlessly send emails using your Google account by activating 2-factor authentication and generating a password through the **`"App passwords"`** section.
 
 ```python
 from fastapi import FastAPI, APIRouter
@@ -76,7 +80,7 @@ router = APIRouter()
 
 
 OWN_EMAIL = ""  # this should be the email which the email will be sent from
-OWN_EMAIL_PASSWORD = ""  # this should be app password
+OWN_EMAIL_PASSWORD = ""  # this should be the app's password
 
 
 class EmailBody(BaseModel):
