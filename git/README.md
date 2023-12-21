@@ -18,6 +18,7 @@
 - [Set remote url with access token](#set-remote-url-with-access-token)
 - [Changing git commit message after push](#changing-git-commit-message-after-push)
 - [Change the url of a remote git repository](#change-the-url-of-a-remote-git-repository)
+- [Remove a big file from any commit](#remove-a-big-file-from-any-commit)
 
   <br>
 
@@ -125,4 +126,13 @@ git push --force-with-lease <repository> <branch>
 
 ```sh
 git remote set-url origin <new_remote_repository_url>
+```
+
+<br>
+
+
+## Remove a big file from any commit
+
+```sh
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch yourfilepath/bigfile.csv" -- --all
 ```
