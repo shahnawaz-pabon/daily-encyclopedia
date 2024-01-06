@@ -37,15 +37,15 @@ docker run --name mongodb -d -p 27017:27017 -v $(pwd)/mongodb_data:/data/db mong
 
 ```sh
 # add key value to all documents
-db.collection_name.updateMany({}, {$set:{"like_count": 1}})
+db.collection_name.updateMany({}, {$set:{"like_count": 1}});
 
 # remove key value from all documents
-db.collection_name.updateMany({}, {$unset:{"notification_details.emergency_label": ""}})
+db.collection_name.updateMany({}, {$unset:{"notification_details.emergency_label": ""}});
 
 # remove multiple documents
 db.collection_name.remove({
   id: { $nin: ['1637042527', '1637127944', '1637213711'] }
-})
+});
 
 # getting a user's schedule on Monday whose email is admin@admin.com
 
@@ -70,7 +70,15 @@ db.users.aggregate([
       timeSlots: "$schedule.timeSlots"
     }
   }
-])
+]);
+
+# getting list between two dates of a specific id
+db.collection_name.find({"createTime": {
+  '$gte': "2023-12-01",
+  '$lte': "2024-01-06"
+},
+  "locationId": "your id"
+});
 ```
 
 ## Miscellaneous Queries
