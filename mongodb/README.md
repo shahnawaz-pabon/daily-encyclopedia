@@ -81,9 +81,7 @@ db.collection_name.find({"createTime": {
 });
 ```
 
-## Miscellaneous Queries
-
-Complex query with aggregation and pagination
+## Complex query with aggregation and pagination
 
 ```python
 # page_number will be given
@@ -240,6 +238,8 @@ const users = await User.find()
 ```
 
 ## Query to format data for the line and bar chart
+
+This query finds the total reviews along with the individual counts for star rating
 
 ```python
 def generate_monthly_report(location_id: str, year: int):
