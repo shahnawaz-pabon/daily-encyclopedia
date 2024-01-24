@@ -238,3 +238,70 @@ const users = await User.find()
   .limit(size)
   .populate("portfolio");
 ```
+
+## Query to format data for the line and bar chart
+
+```python
+def generate_monthly_report(location_id: str, year: int):
+
+    year_str = str(year)
+
+    # Construct start_date and end_date
+    start_date = f"{year_str}-01-01"
+    end_date = f"{int(year_str) + 1}-01-01"
+
+    pipeline = [
+        {
+            "$match": {
+                "locationId": location_id,
+                "createTime": {"$gte": start_date, "$lt": end_date},
+            }
+        },
+        {
+            "$addFields": {
+                "parsedCreateTime": {
+                    "$dateFromParts": {
+                        "year": {"$year": {"$dateFromString": {"dateString": "$createTime"}}},
+                        "month": {"$month": {"$dateFromString": {"dateString": "$createTime"}}},
+                        "day": {"$dayOfMonth": {"$dateFromString": {"dateString": "$createTime"}}},
+                        "hour": {"$hour": {"$dateFromString": {"dateString": "$createTime"}}},
+                        "minute": {"$minute": {"$dateFromString": {"dateString": "$createTime"}}},
+                        "second": {"$second": {"$dateFromString": {"dateString": "$createTime"}}},
+                        "millisecond": {"$millisecond": {"$dateFromString": {"dateString": "$createTime"}}},
+                    }
+                }
+            }
+        },
+        {
+            "$group": {
+                "_id": {"$month": "$parsedCreateTime"},
+                "total": {"$sum": 1},
+                "1 star": {"$sum": {"$cond": [{"$eq": ["$starRating", "ONE"]}, 1, 0]}},
+                "2 star": {"$sum": {"$cond": [{"$eq": ["$starRating", "TWO"]}, 1, 0]}},
+                "3 star": {"$sum": {"$cond": [{"$eq": ["$starRating", "THREE"]}, 1, 0]}},
+                "4 star": {"$sum": {"$cond": [{"$eq": ["$starRating", "FOUR"]}, 1, 0]}},
+                "5 star": {"$sum": {"$cond": [{"$eq": ["$starRating", "FIVE"]}, 1, 0]}},
+            }
+        },
+        {
+            "$project": {
+                "name": {"$dateToString": {"format": "%b", "date": {"$dateFromParts": {"year": year, "month": "$_id", "day": 1}}}},
+                # "month": "$_id.month",
+                "total": 1,
+                "1 star": 1,
+                "2 star": 1,
+                "3 star": 1,
+                "4 star": 1,
+                "5 star": 1,
+                "_id": 0,
+            }
+        },
+        {
+            "$sort": {"createTime": 1}
+        }
+    ]
+
+    result = list(Review.aggregate(pipeline))
+    return result
+
+```
