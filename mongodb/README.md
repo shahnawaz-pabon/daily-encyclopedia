@@ -11,7 +11,7 @@
 - [MongoDB Schema Design Best Practices](https://www.mongodb.com/developer/article/mongodb-schema-design-best-practices/)
 - [Query Keywords and Functions](#query-keywords-and-functions)
 - [MongoDB Shell Commands](#mongodb-shell-commands)
-- [Miscellaneous Queries](#miscellaneous-queries)
+- [Complex query with aggregation and pagination](#complex-query-with-aggregation-and-pagination)
 - [Pagination with linked collections](#pagination-with-linked-collections)
 
 ## Setup mongodb via docker
@@ -303,5 +303,37 @@ def generate_monthly_report(location_id: str, year: int):
 
     result = list(Review.aggregate(pipeline))
     return result
+
+```
+
+## Group by query with a specific condition
+
+```python
+def get_location_wise_bad_reviews():
+    yesterday = (datetime.now() - timedelta(days=1)
+                 ).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # Specify the list of ratings considered as bad reviews
+    bad_ratings = ["ONE", "TWO"]
+
+    # Group reviews by locationId
+    pipeline = [
+        {
+            "$match": {
+                "starRating": {"$in": bad_ratings},
+                "createTime": {"$gte": yesterday},
+            }
+        },
+        {
+            "$group": {
+                "_id": "$locationId",
+                "reviews": {"$push": "$$ROOT"}
+            }
+        }
+    ]
+
+    location_reviews = list(Review.aggregate(pipeline))
+
+    return location_reviews
 
 ```
