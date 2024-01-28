@@ -13,6 +13,8 @@
 - [MongoDB Shell Commands](#mongodb-shell-commands)
 - [Complex query with aggregation and pagination](#complex-query-with-aggregation-and-pagination)
 - [Pagination with linked collections](#pagination-with-linked-collections)
+- [Query to format data for the line and bar chart](#query-to-format-data-for-the-line-and-bar-chart)
+- [Group by query with a specific condition](#group-by-query-with-a-specific-condition)
 
 ## Setup mongodb via docker
 
