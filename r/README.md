@@ -6,11 +6,12 @@
 
 # Table of Contents
 
-- [Install R](#install-r)
+1. [Installing R from the CRAN Repository](#1-installing-r-from-the-cran-repository)
+2. [Installing Jupyter Notebook](#2-installing-jupyter-notebook)
+3. [Setting Up Jupyter to Use the R Kernel](#3-setting-up-jupyter-to-use-the-r-kernel)
 
-## Install R
+## 1. Installing R from the CRAN Repository
 
-### Install R from CRAN repo on Ubuntu
 
 `CRAN` operates as a network of FTP and web servers, providing current releases of R code and documentation for diverse platforms. It includes a dedicated repository specifically for Ubuntu, ensuring access to the latest R version.
 
@@ -32,3 +33,71 @@ sudo apt install --no-install-recommends r-base
 # launching the R shell as the root user
 sudo -i R
 ```
+
+## 2. Installing Jupyter Notebook
+
+### Steps to Install Jupyter Notebook
+
+1. **Update your package list and upgrade existing packages:**
+
+    ```bash
+    sudo apt update
+    sudo apt upgrade
+    ```
+
+2. **Install Python and pip:**
+
+    ```bash
+    sudo apt install python3-pip
+    ```
+
+3. **Upgrade pip to the latest version:**
+
+    ```bash
+    pip3 install --upgrade pip
+    ```
+
+4. **Install Jupyter Notebook:**
+
+    ```bash
+    pip3 install jupyter
+    ```
+
+5. **Start Jupyter Notebook:**
+
+    ```bash
+    jupyter notebook
+    ```
+
+## 3. Setting Up Jupyter to Use the R Kernel
+
+### Steps to Install and Register IRKernel
+
+1. **Open an R session:**
+
+    ```bash
+    R
+    ```
+
+2. **Within the R session, run the following commands to install IRKernel and register it with Jupyter:**
+
+    ```r
+    install.packages('IRkernel')
+    IRkernel::installspec()
+    ```
+
+    **Note:** If you encounter a permission denied error, run R with `sudo`:
+
+    ```bash
+    sudo R
+    ```
+
+    Then, run the IRKernel installation commands again within the R session.
+
+3. **Verify that the R kernel is available in Jupyter:**
+
+    ```bash
+    jupyter kernelspec list
+    ```
+
+    You should see an entry for `ir` among the listed kernels.
