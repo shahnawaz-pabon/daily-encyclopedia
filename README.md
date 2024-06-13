@@ -29,6 +29,7 @@
 - [Python](./python/README.md)
 - [R](./r/README.md)
 - [ReactNative](./react-native/README.md)
+- [Redis](./redis/README.md)
 - [Spring](./spring/README.md)
 - [SQLServer](./sql-server/README.md)
 - [Ubuntu](./ubuntu/README.md)
