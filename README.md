@@ -18,6 +18,7 @@
 - [Kinesis](./kinesis/README.md)
 - [Kubernetes](./kubernetes/README.md)
 - [Markdown](./markdown/README.md)
+- [Matlab](./matlab/README.md)
 - [MongoDB](./mongodb/README.md)
 - [MQTT](./mqtt/README.md)
 - [MySQL](./mysql/README.md)
