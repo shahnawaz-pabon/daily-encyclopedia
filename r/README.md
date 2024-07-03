@@ -6,11 +6,12 @@
 
 # Table of Contents
 
-1. [Installing R from the CRAN Repository](#1-installing-r-from-the-cran-repository)
-2. [Installing Jupyter Notebook](#2-installing-jupyter-notebook)
-3. [Setting Up Jupyter to Use the R Kernel](#3-setting-up-jupyter-to-use-the-r-kernel)
+1. [Installing R from the CRAN Repository](#installing-r-from-the-cran-repository)
+2. [Installing Jupyter Notebook](#installing-jupyter-notebook)
+3. [Setting Up Jupyter to Use the R Kernel](#setting-up-jupyter-to-use-the-r-kernel)
+4. [Installing DataExplorer Package in R on Ubuntu](#installing-dataexplorer-package-in-r-on-ubuntu)
 
-## 1. Installing R from the CRAN Repository
+## Installing R from the CRAN Repository
 
 
 `CRAN` operates as a network of FTP and web servers, providing current releases of R code and documentation for diverse platforms. It includes a dedicated repository specifically for Ubuntu, ensuring access to the latest R version.
@@ -34,7 +35,7 @@ sudo apt install --no-install-recommends r-base
 sudo -i R
 ```
 
-## 2. Installing Jupyter Notebook
+## Installing Jupyter Notebook
 
 ### Steps to Install Jupyter Notebook
 
@@ -69,7 +70,7 @@ sudo -i R
     jupyter notebook
     ```
 
-## 3. Setting Up Jupyter to Use the R Kernel
+## Setting Up Jupyter to Use the R Kernel
 
 ### Steps to Install and Register IRKernel
 
@@ -101,3 +102,45 @@ sudo -i R
     ```
 
     You should see an entry for `ir` among the listed kernels.
+
+## Installing DataExplorer Package in R on Ubuntu
+
+### Instructions
+
+Follow the steps below to install the `DataExplorer` package in R along with its dependencies on an Ubuntu system.
+
+### Step 1: Install System Libraries
+
+First, install the necessary system libraries using the following commands:
+
+```bash
+sudo apt install build-essential libxml2-dev libglpk40 libglpk-dev libcgal-dev libcurl4-openssl-dev libssl-dev
+sudo apt install gfortran
+```
+
+### Step 2: Install Required R Packages
+
+Next, open your R console or RStudio and run the following commands to install the required R packages:
+
+```r
+# Install required system libraries (if not already installed)
+install.packages("curl")
+install.packages("openssl")
+
+# Install required R packages
+install.packages("igraph")
+install.packages("httr")
+install.packages("networkD3")
+install.packages("covr")
+
+# Install DataExplorer package
+install.packages("DataExplorer")
+```
+
+### Verification
+
+Finally, you can load the DataExplorer package to ensure it was installed correctly:
+
+```r
+library(DataExplorer)
+```
