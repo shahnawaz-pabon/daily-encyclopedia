@@ -5,6 +5,7 @@
 # Table of Contents
 
 - [Bash](./bash/README.md)
+- [DevOps](./devops/README.md)
 - [Django](./django/README.md)
 - [Docker](./docker/README.md)
 - [DynamoDB](./dynamodb/README.md)
@@ -17,6 +18,7 @@
 - [Kafka](./kafka/README.md)
 - [Kinesis](./kinesis/README.md)
 - [Kubernetes](./kubernetes/README.md)
+- [MariaDB](./mariadb/README.md)
 - [Markdown](./markdown/README.md)
 - [Matlab](./matlab/README.md)
 - [MongoDB](./mongodb/README.md)
